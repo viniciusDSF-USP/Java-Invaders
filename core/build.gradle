@@ -12,3 +12,13 @@ dependencies {
 jar {
   duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
+
+javadoc {
+  options.memberLevel = JavadocMemberLevel.PRIVATE
+  options.author = true
+  options.addStringOption('Xdoclint:none', '-quiet')
+  failOnError = false
+  source = sourceSets.main.allJava.filter {
+    it.name in ['Alien.java', 'AlienMoveState.java', 'Game.java', 'Main.java', 'Player.java', 'Save.java', 'Score.java', 'Screen.java']
+  }
+}

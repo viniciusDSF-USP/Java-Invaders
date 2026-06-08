@@ -69,7 +69,7 @@ public class Game {
     private float alienMoveInterval;
 
     /** Mutable alien movement state (direction and descend flag). */
-    Alien.AlienMoveState alienMoveState;
+    AlienMoveState alienMoveState;
 
     /** Countdown shown on the level-complete screen. */
     float levelCompleteTimer;
@@ -158,7 +158,7 @@ public class Game {
         bombInterval      = Math.max(0.4f,  8f  / speedMult);
         alienMoveTimer    = 0f;
         bombTimer         = 1f;
-        alienMoveState    = new Alien.AlienMoveState(1f);
+        alienMoveState    = new AlienMoveState(1f);
         initialShootTimer = 0.2f;
     }
 

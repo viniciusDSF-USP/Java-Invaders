@@ -214,6 +214,8 @@ public class Player {
     /**
      * A bullet fired by a player ship. Moves upward and dies when it
      * leaves the screen or hits an alien.
+     * 
+     * @author Larissa R. G.; Vinicius S. F.
      */
     public static class Bullet {
 

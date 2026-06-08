@@ -124,6 +124,8 @@ public class Main extends ApplicationAdapter {
     /**
      * Tiny data class for a timed explosion animation.
      * Just holds position and a countdown.
+     * 
+     * @author Larissa R. G.; Vinicius S. F.
      */
     public static class Explosion {
 
