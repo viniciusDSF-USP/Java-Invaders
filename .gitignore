@@ -3,9 +3,13 @@
 gradle-app.setting
 /build/
 /android/build/
-/core/build/
+/core/build/*
+!/core/build/docs/
+!/core/build/docs/**
 /lwjgl2/build/
-/lwjgl3/build/
+/lwjgl3/build/*
+!/lwjgl3/build/docs/
+!/lwjgl3/build/docs/**
 /html/build/
 /teavm/build/
 /ios/build/

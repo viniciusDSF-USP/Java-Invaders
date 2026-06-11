@@ -48,6 +48,9 @@ public class Game {
     /** The alien grid. */
     Array<Alien> aliens;
 
+    /** Shields protecting players from bombs. */
+    Array<Shields> shields;
+
     /** Active explosion animations. */
     Array<Main.Explosion> explosions;
 
@@ -133,6 +136,7 @@ public class Game {
         bombs        = new Array<>();
         explosions   = new Array<>();
         aliens       = new Array<>();
+        shields = Shields.createForLevel(level, Main.W);
         bonusAwarded = new int[]{0, 0};
 
         if (!loaded) {
@@ -205,6 +209,8 @@ public class Game {
         // tick explosion timers
         for (Main.Explosion e : explosions) e.timer -= dt;
 
+        Shields.update(shields, dt);
+
         checkCollisions();
         cleanUp();
 
@@ -261,6 +267,15 @@ public class Game {
             boolean hit = false;
             if (p1.alive && b.rect().overlaps(p1.rect())) { Player.killPlayer(p1, explosions); hit = true; }
             if (p2.alive && b.rect().overlaps(p2.rect())) { Player.killPlayer(p2, explosions); hit = true; }
+
+            for (Shields s : shields) {
+                if (s.alive && b.rect().overlaps(s.rect())) {
+                    Shields.hitByBomb(s);
+                    hit = true;
+                    break;
+                }
+            }
+
             if (b.y < 0) hit = true;
             if (hit) bi.remove();
         }
@@ -270,6 +285,13 @@ public class Game {
             if (!a.alive) continue;
             if (p1.alive && a.rect().overlaps(p1.rect())) Player.killPlayer(p1, explosions);
             if (p2.alive && a.rect().overlaps(p2.rect())) Player.killPlayer(p2, explosions);
+
+            for (Shields s : shields) {
+                if (s.alive && a.rect().overlaps(s.rect())) {
+                    Shields.destroyInstantly(s);
+                }
+            }
+
             if (a.y - Alien.ALIEN_H / 2 <= 50) currentScreen = Screen.State.GAME_OVER;
         }
     }
@@ -322,6 +344,9 @@ public class Game {
             if (!a.alive) continue;
             Alien.drawAlien(a, shapes);
         }
+
+        // shields
+        Shields.draw(shields, shapes);
 
         // explosions — simple growing circle that fades out
         for (Main.Explosion e : explosions) {

@@ -2,6 +2,7 @@ package io.github.javainvaders;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.utils.Array;
 
 /**
  * Handles persisting and restoring game state to/from a local file.
@@ -45,6 +46,14 @@ public class Save {
             data.append(a.x).append(",")
                 .append(a.y).append(",")
                 .append(a.alive ? "1" : "0").append(",");
+        }
+
+        data.append(game.shields.size).append(",");
+        for (Shields s : game.shields) {
+            data.append(s.x).append(",")
+                .append(s.y).append(",")
+                .append(s.hits).append(",")
+                .append(s.alive ? "1" : "0").append(",");
         }
 
         try {
@@ -125,6 +134,25 @@ public class Save {
                     a.x     = Float.parseFloat(parts[idx++]);
                     a.y     = Float.parseFloat(parts[idx++]);
                     a.alive = parts[idx++].equals("1");
+                }
+            }
+
+            // restore individual shields positions and lives
+            game.shields = new Array<>();
+            if (idx < parts.length) {
+                int shieldCount = Integer.parseInt(parts[idx++]);
+                for (int i = 0; i < shieldCount; i++) {
+                    if (idx + 3 < parts.length) {
+                        float   sx     = Float.parseFloat(parts[idx++]);
+                        float   sy     = Float.parseFloat(parts[idx++]);
+                        int     shits  = Integer.parseInt(parts[idx++]);
+                        boolean salive = parts[idx++].equals("1");
+                        if (salive) {
+                            Shields s = new Shields(sx, sy);
+                            s.hits = shits;
+                            game.shields.add(s);
+                        }
+                    }
                 }
             }
 
