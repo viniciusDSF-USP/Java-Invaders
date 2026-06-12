@@ -1,10 +1,12 @@
 package io.github.javainvaders;
 
+import java.util.Random;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
-import java.util.Random;
+import com.badlogic.gdx.utils.JsonValue;
 
 /**
  * Represents one alien enemy on the grid. Tracks position, type
@@ -22,10 +24,10 @@ public class Alien {
     public static final float ALIEN_H = 24f;
 
     /** Horizontal pixels moved per movement tick. */
-    public static final float ALIEN_STEP = 12f;
+    public static float ALIEN_STEP = 12f;
 
     /** Pixels dropped down when aliens reach the edge. */
-    public static final float ALIEN_DROP = 18f;
+    public static float ALIEN_DROP = 18f;
 
     /** Number of columns in the alien grid. */
     public static final int ALIEN_COLS = 11;
@@ -60,6 +62,16 @@ public class Alien {
         this.y = y;
         this.type = type;
         this.alive = true;
+    }
+
+    /**
+     * Loads alien configuration values from the JSON data.
+     *
+     * @param config The JSON section containing alien settings
+     */
+    public static void loadConfig(JsonValue config) {
+        if (config.has("ALIEN_STEP")) ALIEN_STEP = config.getFloat("ALIEN_STEP");
+        if (config.has("ALIEN_DROP")) ALIEN_DROP = config.getFloat("ALIEN_DROP");
     }
 
     /**
@@ -170,10 +182,10 @@ public class Alien {
         public static final int BOSS_SCORE = 1000;
 
         /** How many bullets it takes to destroy the boss. */
-        public static final int BOSS_MAX_HP = 50;
+        public static int BOSS_MAX_HP = 50;
 
         /** Horizontal drift speed once it reaches its target Y. */
-        public static final float BOSS_SPEED_X = 100f;
+        public static float BOSS_SPEED_X = 100f;
 
         /** Downward entry speed from the top of the screen. */
         public static final float BOSS_ENTRY_SPEED = 250f;
@@ -182,10 +194,10 @@ public class Alien {
         public static final float BOSS_TARGET_Y = Main.H - BOSS_H*0.65f;
 
         /** Seconds between radial bomb bursts. */
-        public static final float BOSS_FIRE_INTERVAL = 2.5f;
+        public static float BOSS_FIRE_INTERVAL = 2.5f;
 
         /** Number of bombs in each radial burst. */
-        public static final int BOSS_BURST_COUNT = 24;
+        public static int BOSS_BURST_COUNT = 24;
 
         /** Amplitude of the vertical bob, in pixels. */
         public static final float BOSS_BOB_AMP = 18f;
@@ -295,6 +307,18 @@ public class Alien {
             this.deathFrozen       = false;
             this.deathFreezeTimer  = 0f;
             this.deathSequenceDone = false;
+        }
+
+        /**
+         * Loads boss configuration values from the JSON data.
+         *
+         * @param config The JSON section containing boss settings
+         */
+        public static void loadConfig(JsonValue config) {
+            if (config.has("BOSS_MAX_HP")) BOSS_MAX_HP = config.getInt("BOSS_MAX_HP");
+            if (config.has("BOSS_SPEED_X")) BOSS_SPEED_X = config.getFloat("BOSS_SPEED_X");
+            if (config.has("BOSS_FIRE_INTERVAL")) BOSS_FIRE_INTERVAL = config.getFloat("BOSS_FIRE_INTERVAL");
+            if (config.has("BOSS_BURST_COUNT")) BOSS_BURST_COUNT = config.getInt("BOSS_BURST_COUNT");
         }
 
         /**
@@ -489,7 +513,7 @@ public class Alien {
     public static class RadialBomb extends Bomb {
 
         /** Travel speed in pixels per second. */
-        public static final float RADIAL_SPEED = 500f;
+        public static float RADIAL_SPEED = 500f;
 
         /** Normalised X component of the travel direction. */
         public final float vx;
@@ -513,6 +537,15 @@ public class Alien {
             this.vy    = (float) Math.sin(angle);
             this.angle = angle;
         }
+
+        /**
+         * Loads radial bomb configuration values from the JSON data.
+         *
+         * @param config The JSON section containing radial bomb settings
+         */
+        public static void loadConfig(JsonValue config) {
+            if (config.has("RADIAL_SPEED")) RADIAL_SPEED = config.getFloat("RADIAL_SPEED");
+        }
     }
 
     // Bomb
@@ -531,7 +564,7 @@ public class Alien {
         public static final float BOMB_H = 14f;
 
         /** How fast bombs fall downward. */
-        public static final float BOMB_SPEED = 220f;
+        public static float BOMB_SPEED = 220f;
 
         /** Horizontal center of the bomb. */
         public float x;
@@ -548,6 +581,15 @@ public class Alien {
         public Bomb(float x, float y) {
             this.x = x;
             this.y = y;
+        }
+
+        /**
+         * Loads radial bomb configuration values from the JSON data.
+         *
+         * @param config The JSON section containing radial bomb settings
+         */
+        public static void loadConfig(JsonValue config) {
+            if (config.has("BOMB_SPEED")) BOMB_SPEED = config.getFloat("BOMB_SPEED");
         }
 
         /**

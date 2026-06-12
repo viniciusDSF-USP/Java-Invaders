@@ -142,7 +142,7 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color">
 <div class="block">Number of columns in the alien grid.</div>
 </div>
-<div class="col-first odd-row-color"><code>static final float</code></div>
+<div class="col-first odd-row-color"><code>static float</code></div>
 <div class="col-second odd-row-color"><code><a href="#ALIEN_DROP" class="member-name-link">ALIEN_DROP</a></code></div>
 <div class="col-last odd-row-color">
 <div class="block">Pixels dropped down when aliens reach the edge.</div>
@@ -157,7 +157,7 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color">
 <div class="block">Number of rows in the alien grid.</div>
 </div>
-<div class="col-first even-row-color"><code>static final float</code></div>
+<div class="col-first even-row-color"><code>static float</code></div>
 <div class="col-second even-row-color"><code><a href="#ALIEN_STEP" class="member-name-link">ALIEN_STEP</a></code></div>
 <div class="col-last even-row-color">
 <div class="block">Horizontal pixels moved per movement tick.</div>
@@ -230,17 +230,22 @@ loadScripts(document, 'script');</script>
 <div class="block">Draws an alien using shape primitives.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#moveAliens(com.badlogic.gdx.utils.Array,io.github.javainvaders.AlienMoveState,int,int)" class="member-name-link">moveAliens</a><wbr>(com.badlogic.gdx.utils.Array&lt;<a href="Alien.html" title="class in io.github.javainvaders">Alien</a>&gt;&nbsp;aliens,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadConfig(com.badlogic.gdx.utils.JsonValue)" class="member-name-link">loadConfig</a><wbr>(com.badlogic.gdx.utils.JsonValue&nbsp;config)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Loads alien configuration values from the JSON data.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#moveAliens(com.badlogic.gdx.utils.Array,io.github.javainvaders.AlienMoveState,int,int)" class="member-name-link">moveAliens</a><wbr>(com.badlogic.gdx.utils.Array&lt;<a href="Alien.html" title="class in io.github.javainvaders">Alien</a>&gt;&nbsp;aliens,
  <a href="AlienMoveState.html" title="class in io.github.javainvaders">AlienMoveState</a>&nbsp;state,
  int&nbsp;level,
  int&nbsp;screenW)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Moves every alive alien one step sideways (or drops them down if
  alienDescend is true).</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>com.badlogic.gdx.math.Rectangle</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rect()" class="member-name-link">rect</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>com.badlogic.gdx.math.Rectangle</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rect()" class="member-name-link">rect</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Hitbox for collision checks against bullets or players.</div>
 </div>
 </div>
@@ -293,31 +298,15 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="ALIEN_STEP">
 <h3>ALIEN_STEP</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">ALIEN_STEP</span></div>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">ALIEN_STEP</span></div>
 <div class="block">Horizontal pixels moved per movement tick.</div>
-<dl class="notes">
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="../../../constant-values.html#io.github.javainvaders.Alien.ALIEN_STEP">Constant Field Values</a></li>
-</ul>
-</dd>
-</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="ALIEN_DROP">
 <h3>ALIEN_DROP</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">ALIEN_DROP</span></div>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">ALIEN_DROP</span></div>
 <div class="block">Pixels dropped down when aliens reach the edge.</div>
-<dl class="notes">
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="../../../constant-values.html#io.github.javainvaders.Alien.ALIEN_DROP">Constant Field Values</a></li>
-</ul>
-</dd>
-</dl>
 </section>
 </li>
 <li>
@@ -410,6 +399,17 @@ loadScripts(document, 'script');</script>
 <section class="method-details" id="method-detail">
 <h2>Method Details</h2>
 <ul class="member-list">
+<li>
+<section class="detail" id="loadConfig(com.badlogic.gdx.utils.JsonValue)">
+<h3>loadConfig</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">loadConfig</span><wbr><span class="parameters">(com.badlogic.gdx.utils.JsonValue&nbsp;config)</span></div>
+<div class="block">Loads alien configuration values from the JSON data.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>config</code> - The JSON section containing alien settings</dd>
+</dl>
+</section>
+</li>
 <li>
 <section class="detail" id="rect()">
 <h3>rect</h3>

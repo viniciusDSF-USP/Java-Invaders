@@ -114,9 +114,19 @@ public class Screen {
      */
     public void handleMenu(float dt, Game game) {
         MenuAction action = updateMenu(dt);
-        if (action == MenuAction.NEW_GAME)       game.startNewGame();
-        else if (action == MenuAction.LOAD_GAME) Save.loadGame(game);
-        else if (action == MenuAction.EXIT)      Gdx.app.exit();
+        switch (action){
+            case NEW_GAME:
+                game.startNewGame();
+                break;
+            case LOAD_GAME:
+                Save.loadGame(game);
+                break;
+            case EXIT:
+                Gdx.app.exit();
+                break;
+            default:
+                break;
+        }
         renderMenu();
     }
 

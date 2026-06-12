@@ -170,7 +170,7 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color">
 <div class="block">How tall the ship is.</div>
 </div>
-<div class="col-first odd-row-color"><code>static final float</code></div>
+<div class="col-first odd-row-color"><code>static float</code></div>
 <div class="col-second odd-row-color"><code><a href="#SHIP_SPEED" class="member-name-link">SHIP_SPEED</a></code></div>
 <div class="col-last odd-row-color">
 <div class="block">Movement speed of the ship (pixels per second).</div>
@@ -180,7 +180,7 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color">
 <div class="block">How wide the ship is, in pixels.</div>
 </div>
-<div class="col-first odd-row-color"><code>static final float</code></div>
+<div class="col-first odd-row-color"><code>static float</code></div>
 <div class="col-second odd-row-color"><code><a href="#SHOOT_COOLDOWN" class="member-name-link">SHOOT_COOLDOWN</a></code></div>
 <div class="col-last odd-row-color">
 <div class="block">Min time between shots.</div>
@@ -258,13 +258,18 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Marks a player as dead and kicks off the respawn/blink animation.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>com.badlogic.gdx.math.Rectangle</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rect()" class="member-name-link">rect</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadConfig(com.badlogic.gdx.utils.JsonValue)" class="member-name-link">loadConfig</a><wbr>(com.badlogic.gdx.utils.JsonValue&nbsp;config)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Loads player configuration values from the JSON data.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>com.badlogic.gdx.math.Rectangle</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rect()" class="member-name-link">rect</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Returns the hitbox rectangle used for collision detection.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#updatePlayer(io.github.javainvaders.Player,float,int,int,int,com.badlogic.gdx.utils.Array,int,float)" class="member-name-link">updatePlayer</a><wbr>(<a href="Player.html" title="class in io.github.javainvaders">Player</a>&nbsp;p,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#updatePlayer(io.github.javainvaders.Player,float,int,int,int,com.badlogic.gdx.utils.Array,int,float)" class="member-name-link">updatePlayer</a><wbr>(<a href="Player.html" title="class in io.github.javainvaders">Player</a>&nbsp;p,
  float&nbsp;dt,
  int&nbsp;left,
  int&nbsp;right,
@@ -272,7 +277,7 @@ loadScripts(document, 'script');</script>
  com.badlogic.gdx.utils.Array&lt;<a href="Player.Bullet.html" title="class in io.github.javainvaders">Player.Bullet</a>&gt;&nbsp;bullets,
  int&nbsp;screenW,
  float&nbsp;initialShootTimer)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Updates a single player: movement input, shoot cooldown, and respawn blink.</div>
 </div>
 </div>
@@ -325,31 +330,15 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="SHIP_SPEED">
 <h3>SHIP_SPEED</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">SHIP_SPEED</span></div>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">SHIP_SPEED</span></div>
 <div class="block">Movement speed of the ship (pixels per second).</div>
-<dl class="notes">
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="../../../constant-values.html#io.github.javainvaders.Player.SHIP_SPEED">Constant Field Values</a></li>
-</ul>
-</dd>
-</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="SHOOT_COOLDOWN">
 <h3>SHOOT_COOLDOWN</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">SHOOT_COOLDOWN</span></div>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">SHOOT_COOLDOWN</span></div>
 <div class="block">Min time between shots.</div>
-<dl class="notes">
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="../../../constant-values.html#io.github.javainvaders.Player.SHOOT_COOLDOWN">Constant Field Values</a></li>
-</ul>
-</dd>
-</dl>
 </section>
 </li>
 <li>
@@ -458,6 +447,17 @@ loadScripts(document, 'script');</script>
 <section class="method-details" id="method-detail">
 <h2>Method Details</h2>
 <ul class="member-list">
+<li>
+<section class="detail" id="loadConfig(com.badlogic.gdx.utils.JsonValue)">
+<h3>loadConfig</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">loadConfig</span><wbr><span class="parameters">(com.badlogic.gdx.utils.JsonValue&nbsp;config)</span></div>
+<div class="block">Loads player configuration values from the JSON data.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>config</code> - The JSON section containing player settings</dd>
+</dl>
+</section>
+</li>
 <li>
 <section class="detail" id="rect()">
 <h3>rect</h3>

@@ -139,7 +139,7 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color">
 <div class="block">How fast the boss bobs up and down (full cycles per second).</div>
 </div>
-<div class="col-first odd-row-color"><code>static final int</code></div>
+<div class="col-first odd-row-color"><code>static int</code></div>
 <div class="col-second odd-row-color"><code><a href="#BOSS_BURST_COUNT" class="member-name-link">BOSS_BURST_COUNT</a></code></div>
 <div class="col-last odd-row-color">
 <div class="block">Number of bombs in each radial burst.</div>
@@ -164,7 +164,7 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color">
 <div class="block">Downward entry speed from the top of the screen.</div>
 </div>
-<div class="col-first even-row-color"><code>static final float</code></div>
+<div class="col-first even-row-color"><code>static float</code></div>
 <div class="col-second even-row-color"><code><a href="#BOSS_FIRE_INTERVAL" class="member-name-link">BOSS_FIRE_INTERVAL</a></code></div>
 <div class="col-last even-row-color">
 <div class="block">Seconds between radial bomb bursts.</div>
@@ -174,7 +174,7 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color">
 <div class="block">Height of the boss sprite.</div>
 </div>
-<div class="col-first even-row-color"><code>static final int</code></div>
+<div class="col-first even-row-color"><code>static int</code></div>
 <div class="col-second even-row-color"><code><a href="#BOSS_MAX_HP" class="member-name-link">BOSS_MAX_HP</a></code></div>
 <div class="col-last even-row-color">
 <div class="block">How many bullets it takes to destroy the boss.</div>
@@ -184,7 +184,7 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color">
 <div class="block">Points awarded for killing the boss.</div>
 </div>
-<div class="col-first even-row-color"><code>static final float</code></div>
+<div class="col-first even-row-color"><code>static float</code></div>
 <div class="col-second even-row-color"><code><a href="#BOSS_SPEED_X" class="member-name-link">BOSS_SPEED_X</a></code></div>
 <div class="col-last even-row-color">
 <div class="block">Horizontal drift speed once it reaches its target Y.</div>
@@ -305,7 +305,7 @@ loadScripts(document, 'script');</script>
 <section class="method-summary" id="method-summary">
 <h2>Method Summary</h2>
 <div id="method-summary-table">
-<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="method-summary-table-tab0" role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table', 3)" class="active-table-tab">All Methods</button><button id="method-summary-table-tab2" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab2', 3)" class="table-tab">Instance Methods</button><button id="method-summary-table-tab4" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab4', 3)" class="table-tab">Concrete Methods</button></div>
+<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="method-summary-table-tab0" role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table', 3)" class="active-table-tab">All Methods</button><button id="method-summary-table-tab1" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab1', 3)" class="table-tab">Static Methods</button><button id="method-summary-table-tab2" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab2', 3)" class="table-tab">Instance Methods</button><button id="method-summary-table-tab4" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab4', 3)" class="table-tab">Concrete Methods</button></div>
 <div id="method-summary-table.tabpanel" role="tabpanel" aria-labelledby="method-summary-table-tab0">
 <div class="summary-table three-column-summary">
 <div class="table-header col-first">Modifier and Type</div>
@@ -324,16 +324,21 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Registers a bullet hit.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>com.badlogic.gdx.math.Rectangle</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rect()" class="member-name-link">rect</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadConfig(com.badlogic.gdx.utils.JsonValue)" class="member-name-link">loadConfig</a><wbr>(com.badlogic.gdx.utils.JsonValue&nbsp;config)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Loads boss configuration values from the JSON data.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>com.badlogic.gdx.math.Rectangle</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rect()" class="member-name-link">rect</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Hitbox for collision checks against player bullets.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update(float,com.badlogic.gdx.utils.Array,int)" class="member-name-link">update</a><wbr>(float&nbsp;dt,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update(float,com.badlogic.gdx.utils.Array,int)" class="member-name-link">update</a><wbr>(float&nbsp;dt,
  com.badlogic.gdx.utils.Array&lt;<a href="Alien.Bomb.html" title="class in io.github.javainvaders">Alien.Bomb</a>&gt;&nbsp;bombs,
  int&nbsp;screenW)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Updates boss movement, entry descent and the fire timer.</div>
 </div>
 </div>
@@ -401,31 +406,15 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="BOSS_MAX_HP">
 <h3>BOSS_MAX_HP</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">BOSS_MAX_HP</span></div>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">BOSS_MAX_HP</span></div>
 <div class="block">How many bullets it takes to destroy the boss.</div>
-<dl class="notes">
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="../../../constant-values.html#io.github.javainvaders.Alien.Boss.BOSS_MAX_HP">Constant Field Values</a></li>
-</ul>
-</dd>
-</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="BOSS_SPEED_X">
 <h3>BOSS_SPEED_X</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">BOSS_SPEED_X</span></div>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">BOSS_SPEED_X</span></div>
 <div class="block">Horizontal drift speed once it reaches its target Y.</div>
-<dl class="notes">
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="../../../constant-values.html#io.github.javainvaders.Alien.Boss.BOSS_SPEED_X">Constant Field Values</a></li>
-</ul>
-</dd>
-</dl>
 </section>
 </li>
 <li>
@@ -461,31 +450,15 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="BOSS_FIRE_INTERVAL">
 <h3>BOSS_FIRE_INTERVAL</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">BOSS_FIRE_INTERVAL</span></div>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">BOSS_FIRE_INTERVAL</span></div>
 <div class="block">Seconds between radial bomb bursts.</div>
-<dl class="notes">
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="../../../constant-values.html#io.github.javainvaders.Alien.Boss.BOSS_FIRE_INTERVAL">Constant Field Values</a></li>
-</ul>
-</dd>
-</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="BOSS_BURST_COUNT">
 <h3>BOSS_BURST_COUNT</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">BOSS_BURST_COUNT</span></div>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">BOSS_BURST_COUNT</span></div>
 <div class="block">Number of bombs in each radial burst.</div>
-<dl class="notes">
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="../../../constant-values.html#io.github.javainvaders.Alien.Boss.BOSS_BURST_COUNT">Constant Field Values</a></li>
-</ul>
-</dd>
-</dl>
 </section>
 </li>
 <li>
@@ -728,6 +701,17 @@ loadScripts(document, 'script');</script>
 <section class="method-details" id="method-detail">
 <h2>Method Details</h2>
 <ul class="member-list">
+<li>
+<section class="detail" id="loadConfig(com.badlogic.gdx.utils.JsonValue)">
+<h3>loadConfig</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">loadConfig</span><wbr><span class="parameters">(com.badlogic.gdx.utils.JsonValue&nbsp;config)</span></div>
+<div class="block">Loads boss configuration values from the JSON data.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>config</code> - The JSON section containing boss settings</dd>
+</dl>
+</section>
+</li>
 <li>
 <section class="detail" id="rect()">
 <h3>rect</h3>

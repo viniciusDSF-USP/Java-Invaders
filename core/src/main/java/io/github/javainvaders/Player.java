@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.JsonValue;
 
 /**
  * Represents a player ship in the game. Holds position, lives,
@@ -21,10 +22,10 @@ public class Player {
     public static final float SHIP_H = 24f;
 
     /** Movement speed of the ship (pixels per second). */
-    public static final float SHIP_SPEED = 320f;
+    public static float SHIP_SPEED = 320f;
 
     /** Min time between shots. */
-    public static final float SHOOT_COOLDOWN = 0.35f;
+    public static float SHOOT_COOLDOWN = 0.35f;
 
     /** Horizontal position of the ship center. */
     public float x;
@@ -74,6 +75,16 @@ public class Player {
         this.shootTimer = 0f;
         this.alive = true;
         this.respawnTimer = 0f;
+    }
+
+    /**
+     * Loads player configuration values from the JSON data.
+     *
+     * @param config The JSON section containing player settings
+     */
+    public static void loadConfig(JsonValue config) {
+        if (config.has("SHIP_SPEED"))     SHIP_SPEED = config.getFloat("SHIP_SPEED");
+        if (config.has("SHOOT_COOLDOWN")) SHOOT_COOLDOWN = config.getFloat("SHOOT_COOLDOWN");
     }
 
     /**
@@ -226,7 +237,7 @@ public class Player {
         public static final float BULLET_H = 16f;
 
         /** How fast bullets travell upward. */
-        public static final float BULLET_SPEED = 320f;
+        public static float BULLET_SPEED = 320f;
 
         /** Horizontal center of the bullet. */
         public float x;
@@ -248,6 +259,15 @@ public class Player {
             this.x = x;
             this.y = y;
             this.owner = owner;
+        }
+
+        /**
+         * Loads bullet configuration values from the JSON data.
+         *
+         * @param config The JSON section containing bullet settings
+         */
+        public static void loadConfig(JsonValue config) {
+            if (config.has("BULLET_SPEED")) BULLET_SPEED = config.getFloat("BULLET_SPEED");
         }
 
         /**

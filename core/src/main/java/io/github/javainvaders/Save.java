@@ -3,6 +3,7 @@ package io.github.javainvaders;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.JsonValue;
 
 /**
  * Handles persisting and restoring game state to/from a local file.
@@ -13,7 +14,16 @@ import com.badlogic.gdx.utils.Array;
 public class Save {
 
     /** File name written to the app's local storage directory. */
-    private static final String SAVE_FILE = "javainvaders.sav";
+    private static String SAVE_FILE = "javainvaders.sav";
+
+    /**
+     * Loads player configuration values from the JSON data.
+     *
+     * @param config The JSON section containing player settings
+     */
+    public static void loadConfig(JsonValue config) {
+        if (config.has("SAVE_FILE")) SAVE_FILE = config.getString("SAVE_FILE")+".sav";
+    }
 
     /**
      * Writes the current game state to the save file.

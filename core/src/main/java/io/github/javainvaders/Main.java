@@ -69,6 +69,7 @@ public class Main extends ApplicationAdapter {
 
         screenManager = new Screen(font, bigFont, batch, shapes);
         game = new Game(this, batch, shapes, font);
+        Config.loadFile();
         game.currentScreen = Screen.State.MAIN_MENU;
     }
 

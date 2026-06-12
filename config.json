@@ -1,0 +1,21 @@
+{
+    "default": false,
+    "Player": {
+        "SHIP_SPEED": 320,
+        "SHOOT_COOLDOWN": 0.35,
+        "BULLET_SPEED": 320
+    },
+    "Alien": {
+        "ALIEN_STEP": 12,
+        "ALIEN_DROP": 18,
+        "BOMB_SPEED": 220,
+        "BOSS_MAX_HP": 50,
+        "BOSS_SPEED_X": 100,
+        "BOSS_FIRE_INTERVAL": 2.5,
+        "BOSS_BURST_COUNT": 24,
+        "RADIAL_SPEED": 500
+    },
+    "Save": {
+        "SAVE_FILE": "javainvaders"
+    }
+}
