@@ -6,6 +6,8 @@ gradle-app.setting
 /core/build/*
 !/core/build/docs/
 !/core/build/docs/**
+!/core/build/reports/
+!/core/build/reports/**
 /lwjgl2/build/
 /lwjgl3/build/*
 !/lwjgl3/build/docs/

@@ -140,19 +140,24 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadConfig(com.badlogic.gdx.utils.JsonValue)" class="member-name-link">loadConfig</a><wbr>(com.badlogic.gdx.utils.JsonValue&nbsp;config)</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#canSave(io.github.javainvaders.Game)" class="member-name-link">canSave</a><wbr>(<a href="Game.html" title="class in io.github.javainvaders">Game</a>&nbsp;game)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Loads player configuration values from the JSON data.</div>
+<div class="block">Returns true when the game state is safe to persist.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadGame(io.github.javainvaders.Game)" class="member-name-link">loadGame</a><wbr>(<a href="Game.html" title="class in io.github.javainvaders">Game</a>&nbsp;game)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadConfig(com.badlogic.gdx.utils.JsonValue)" class="member-name-link">loadConfig</a><wbr>(com.badlogic.gdx.utils.JsonValue&nbsp;config)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Reads the save file and restores game state into the given Game instance.</div>
+<div class="block">Loads player configuration values from the JSON data.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#saveGame(io.github.javainvaders.Game)" class="member-name-link">saveGame</a><wbr>(<a href="Game.html" title="class in io.github.javainvaders">Game</a>&nbsp;game)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadGame(io.github.javainvaders.Game)" class="member-name-link">loadGame</a><wbr>(<a href="Game.html" title="class in io.github.javainvaders">Game</a>&nbsp;game)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Reads the save file and restores game state into the given Game instance.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#saveGame(io.github.javainvaders.Game)" class="member-name-link">saveGame</a><wbr>(<a href="Game.html" title="class in io.github.javainvaders">Game</a>&nbsp;game)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Writes the current game state to the save file.</div>
 </div>
 </div>
@@ -209,6 +214,21 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>config</code> - The JSON section containing player settings</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="canSave(io.github.javainvaders.Game)">
+<h3>canSave</h3>
+<div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">canSave</span><wbr><span class="parameters">(<a href="Game.html" title="class in io.github.javainvaders">Game</a>&nbsp;game)</span></div>
+<div class="block">Returns true when the game state is safe to persist.
+ Saving is blocked in two situations if a player is in their last-life death animation
+ or the boss is active</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>game</code> - the running Game instance to inspect</dd>
+<dt>Returns:</dt>
+<dd>true if saving is allowed</dd>
 </dl>
 </section>
 </li>

@@ -26,6 +26,25 @@ public class Save {
     }
 
     /**
+     * Returns true when the game state is safe to persist.
+     * Saving is blocked in two situations if a player is in their last-life death animation
+     * or the boss is active
+     *
+     * @param game the running Game instance to inspect
+     * @return true if saving is allowed
+     */
+    private static boolean canSave(Game game) {
+        // Block while the boss is on screen (spawned but not fully gone)
+        if (game.boss != null && (game.boss.alive || game.boss.dying)) return false;
+ 
+        // Block while any player is dying on their last life
+        boolean p1DyingLastLife = !game.p1.alive && game.p1.lives <= 1 && game.p1.respawnTimer > 0;
+        boolean p2DyingLastLife = !game.p2.alive && game.p2.lives <= 1 && game.p2.respawnTimer > 0;
+
+        return !(p1DyingLastLife || p2DyingLastLife);
+    }
+
+    /**
      * Writes the current game state to the save file.
      * Silently does nothing if p1/p2 are null (no game running).
      * Sets game.saveFeedbackTimer on success so the HUD shows "Saved!".
@@ -34,6 +53,7 @@ public class Save {
      */
     public static void saveGame(Game game) {
         if (game.p1 == null || game.p2 == null) return;
+        if (!canSave(game)) return;
 
         StringBuilder data = new StringBuilder();
         data.append(game.level).append(",");
