@@ -157,7 +157,7 @@ public class Save {
             }
 
             game.currentScreen = Screen.State.GAMEPLAY;
-        } catch (Exception e) {
+        } catch (NumberFormatException | ArrayIndexOutOfBoundsException | com.badlogic.gdx.utils.GdxRuntimeException e) {
             game.startNewGame();
         }
     }

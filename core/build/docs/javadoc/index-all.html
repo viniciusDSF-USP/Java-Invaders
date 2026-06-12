@@ -87,6 +87,15 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">A bomb droped by an alien.</div>
 </dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html" class="type-name-link" title="class in io.github.javainvaders">Alien.Boss</a> - Class in <a href="io/github/javainvaders/package-summary.html">io.github.javainvaders</a></dt>
+<dd>
+<div class="block">The level-3 boss.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.RadialBomb.html" class="type-name-link" title="class in io.github.javainvaders">Alien.RadialBomb</a> - Class in <a href="io/github/javainvaders/package-summary.html">io.github.javainvaders</a></dt>
+<dd>
+<div class="block">A bomb fired by the boss that travels outward at a fixed angle
+ instead of straight down.</div>
+</dd>
 <dt><a href="io/github/javainvaders/AlienMoveState.html#alienDescend" class="member-name-link">alienDescend</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/AlienMoveState.html" title="class in io.github.javainvaders">AlienMoveState</a></dt>
 <dd>
 <div class="block">True when aliens should drop down on the next tick.</div>
@@ -123,6 +132,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Wether this alien is still in play.</div>
 </dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#alive" class="member-name-link">alive</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Whether the boss is still alive.</div>
+</dd>
 <dt><a href="io/github/javainvaders/Player.html#alive" class="member-name-link">alive</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Player.html" title="class in io.github.javainvaders">Player</a></dt>
 <dd>
 <div class="block">Wether the ship is currently on screen and active.</div>
@@ -134,6 +147,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="io/github/javainvaders/Player.html#allPlayersDead(io.github.javainvaders.Player,io.github.javainvaders.Player)" class="member-name-link">allPlayersDead(Player, Player)</a> - Static method in class io.github.javainvaders.<a href="io/github/javainvaders/Player.html" title="class in io.github.javainvaders">Player</a></dt>
 <dd>
 <div class="block">Returns true when both players are dead with no lives remaining.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.RadialBomb.html#angle" class="member-name-link">angle</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.RadialBomb.html" title="class in io.github.javainvaders">Alien.RadialBomb</a></dt>
+<dd>
+<div class="block">Accumulated rotation angle for the spin visual.</div>
 </dd>
 <dt><a href="io/github/javainvaders/Score.html#awardLevelBonus(io.github.javainvaders.Player,io.github.javainvaders.Player,int,int%5B%5D)" class="member-name-link">awardLevelBonus(Player, Player, int, int[])</a> - Static method in class io.github.javainvaders.<a href="io/github/javainvaders/Score.html" title="class in io.github.javainvaders">Score</a></dt>
 <dd>
@@ -175,6 +192,14 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Wether the ship is visible during a blink frame.</div>
 </dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#bobOffset" class="member-name-link">bobOffset</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Vertical offset applied on top of BOSS_TARGET_Y — oscillates via sine.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#bobTimer" class="member-name-link">bobTimer</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Accumulated time used to drive the sine-wave vertical bob.</div>
+</dd>
 <dt><a href="io/github/javainvaders/Alien.Bomb.html#%3Cinit%3E(float,float)" class="member-name-link">Bomb(float, float)</a> - Constructor for class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Bomb.html" title="class in io.github.javainvaders">Alien.Bomb</a></dt>
 <dd>
 <div class="block">Creates a bomb at the given position (usually bottom of an alien).</div>
@@ -206,6 +231,83 @@ loadScripts(document, 'script');</script>
 <dt><a href="io/github/javainvaders/Game.html#bonusAwarded" class="member-name-link">bonusAwarded</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Game.html" title="class in io.github.javainvaders">Game</a></dt>
 <dd>
 <div class="block">Bonus points awarded to each player at level end.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Game.html#boss" class="member-name-link">boss</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Game.html" title="class in io.github.javainvaders">Game</a></dt>
+<dd>
+<div class="block">Boss for level 3 — null until all normal aliens are dead.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#%3Cinit%3E(int)" class="member-name-link">Boss(int)</a> - Constructor for class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Creates a boss that starts above the visible screen and
+ descends to its patrol height.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#BOSS_BOB_AMP" class="member-name-link">BOSS_BOB_AMP</a> - Static variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Amplitude of the vertical bob, in pixels.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#BOSS_BOB_SPEED" class="member-name-link">BOSS_BOB_SPEED</a> - Static variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">How fast the boss bobs up and down (full cycles per second).</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#BOSS_BURST_COUNT" class="member-name-link">BOSS_BURST_COUNT</a> - Static variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Number of bombs in each radial burst.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#BOSS_DEATH_FLASH_INTERVAL" class="member-name-link">BOSS_DEATH_FLASH_INTERVAL</a> - Static variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Duration of each flash on/off half-cycle during death, in seconds.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#BOSS_DEATH_FLASHES" class="member-name-link">BOSS_DEATH_FLASHES</a> - Static variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">How many times the boss flashes white during its death sequence.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#BOSS_DEATH_FREEZE_DURATION" class="member-name-link">BOSS_DEATH_FREEZE_DURATION</a> - Static variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Seconds the boss stays as a white static silhouette before the final explosion.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#BOSS_ENTRY_SPEED" class="member-name-link">BOSS_ENTRY_SPEED</a> - Static variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Downward entry speed from the top of the screen.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Game.html#BOSS_EXPLOSION_OFFSETS" class="member-name-link">BOSS_EXPLOSION_OFFSETS</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Game.html" title="class in io.github.javainvaders">Game</a></dt>
+<dd>
+<div class="block">Positions of explosion on boss death</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#BOSS_FIRE_INTERVAL" class="member-name-link">BOSS_FIRE_INTERVAL</a> - Static variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Seconds between radial bomb bursts.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#BOSS_H" class="member-name-link">BOSS_H</a> - Static variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Height of the boss sprite.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#BOSS_MAX_HP" class="member-name-link">BOSS_MAX_HP</a> - Static variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">How many bullets it takes to destroy the boss.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#BOSS_SCORE" class="member-name-link">BOSS_SCORE</a> - Static variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Points awarded for killing the boss.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#BOSS_SPEED_X" class="member-name-link">BOSS_SPEED_X</a> - Static variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Horizontal drift speed once it reaches its target Y.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#BOSS_TARGET_Y" class="member-name-link">BOSS_TARGET_Y</a> - Static variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Y position the boss stops descending at.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#BOSS_W" class="member-name-link">BOSS_W</a> - Static variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Width of the boss sprite — roughly 13.5x a normal alien.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Game.html#bossExplosionIndex" class="member-name-link">bossExplosionIndex</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Game.html" title="class in io.github.javainvaders">Game</a></dt>
+<dd>
+<div class="block">Index of explosion on boss death to look on offset</div>
+</dd>
+<dt><a href="io/github/javainvaders/Game.html#bossExplosionTimer" class="member-name-link">bossExplosionTimer</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Game.html" title="class in io.github.javainvaders">Game</a></dt>
+<dd>
+<div class="block">Timer to make the animation of boss death</div>
 </dd>
 <dt><a href="io/github/javainvaders/Player.Bullet.html#%3Cinit%3E(float,float,int)" class="member-name-link">Bullet(float, float, int)</a> - Constructor for class io.github.javainvaders.<a href="io/github/javainvaders/Player.Bullet.html" title="class in io.github.javainvaders">Player.Bullet</a></dt>
 <dd>
@@ -251,8 +353,42 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:D">D</h2>
 <dl class="index">
+<dt><a href="io/github/javainvaders/Alien.Boss.html#deathFlashesLeft" class="member-name-link">deathFlashesLeft</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Counts how many flash half-cycles remain in the death sequence.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#deathFlashTimer" class="member-name-link">deathFlashTimer</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Countdown for each individual flash half-cycle.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#deathFreezeTimer" class="member-name-link">deathFreezeTimer</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Countdown for the frozen-silhouette phase.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#deathFrozen" class="member-name-link">deathFrozen</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">True when all flashes are done and the boss is held as a solid white
+ silhouette for BOSS_DEATH_FREEZE_DURATION before the final explosion.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#deathSequenceDone" class="member-name-link">deathSequenceDone</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">True once the death sequence is fully over and the game can award
+ the boss score, spawn the final explosion and proceed to YOU WIN.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#deathVisible" class="member-name-link">deathVisible</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Whether the boss sprite is visible during a death-flash off-frame.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#dirX" class="member-name-link">dirX</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Current horizontal movement direction, +1 or -1.</div>
+</dd>
 <dt><a href="io/github/javainvaders/Main.html#dispose()" class="member-name-link">dispose()</a> - Method in class io.github.javainvaders.<a href="io/github/javainvaders/Main.html" title="class in io.github.javainvaders">Main</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#draw(com.badlogic.gdx.graphics.glutils.ShapeRenderer)" class="member-name-link">draw(ShapeRenderer)</a> - Method in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Draws the boss using shape primitives.</div>
+</dd>
 <dt><a href="io/github/javainvaders/Alien.html#drawAlien(io.github.javainvaders.Alien,com.badlogic.gdx.graphics.glutils.ShapeRenderer)" class="member-name-link">drawAlien(Alien, ShapeRenderer)</a> - Static method in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.html" title="class in io.github.javainvaders">Alien</a></dt>
 <dd>
 <div class="block">Draws an alien using shape primitives.</div>
@@ -273,9 +409,17 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Picks a random alive alien to drop a bomb.</div>
 </dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#dying" class="member-name-link">dying</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">True once the boss reaches zero HP and the death sequence begins.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:E">E</h2>
 <dl class="index">
+<dt><a href="io/github/javainvaders/Alien.Boss.html#entering" class="member-name-link">entering</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">True while the boss is still entering from the top.</div>
+</dd>
 <dt><a href="io/github/javainvaders/Screen.MenuAction.html#EXIT" class="member-name-link">EXIT</a> - Enum constant in enum class io.github.javainvaders.<a href="io/github/javainvaders/Screen.MenuAction.html" title="enum class in io.github.javainvaders">Screen.MenuAction</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="io/github/javainvaders/Screen.PauseAction.html#EXIT_GAME" class="member-name-link">EXIT_GAME</a> - Enum constant in enum class io.github.javainvaders.<a href="io/github/javainvaders/Screen.PauseAction.html" title="enum class in io.github.javainvaders">Screen.PauseAction</a></dt>
@@ -293,6 +437,12 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:F">F</h2>
 <dl class="index">
+<dt><a href="io/github/javainvaders/Alien.Boss.html#fireBurst(com.badlogic.gdx.utils.Array)" class="member-name-link">fireBurst(Array&lt;Alien.Bomb&gt;)</a> - Method in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#fireTimer" class="member-name-link">fireTimer</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Countdown to the next bomb burst.</div>
+</dd>
 <dt><a href="io/github/javainvaders/Game.html#font" class="member-name-link">font</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Game.html" title="class in io.github.javainvaders">Game</a></dt>
 <dd>
 <div class="block">Regular font for HUD text.</div>
@@ -344,6 +494,18 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Handles the full pause frame: reads input, transitions state on Game,
  and draws the pause overlay on top of the frozen game.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#hit()" class="member-name-link">hit()</a> - Method in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Registers a bullet hit.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#hitFlashTimer" class="member-name-link">hitFlashTimer</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Timer for the hit-flash visual effect.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#hp" class="member-name-link">hp</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Remaining hit points.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:I">I</h2>
@@ -497,9 +659,21 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:R">R</h2>
 <dl class="index">
+<dt><a href="io/github/javainvaders/Alien.RadialBomb.html#RADIAL_SPEED" class="member-name-link">RADIAL_SPEED</a> - Static variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.RadialBomb.html" title="class in io.github.javainvaders">Alien.RadialBomb</a></dt>
+<dd>
+<div class="block">Travel speed in pixels per second.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.RadialBomb.html#%3Cinit%3E(float,float,float)" class="member-name-link">RadialBomb(float, float, float)</a> - Constructor for class io.github.javainvaders.<a href="io/github/javainvaders/Alien.RadialBomb.html" title="class in io.github.javainvaders">Alien.RadialBomb</a></dt>
+<dd>
+<div class="block">Creates a radial bomb fired from (x, y) in the given direction angle.</div>
+</dd>
 <dt><a href="io/github/javainvaders/Alien.Bomb.html#rect()" class="member-name-link">rect()</a> - Method in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Bomb.html" title="class in io.github.javainvaders">Alien.Bomb</a></dt>
 <dd>
 <div class="block">Hitbox for collision checks agaisnt player ships.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#rect()" class="member-name-link">rect()</a> - Method in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Hitbox for collision checks against player bullets.</div>
 </dd>
 <dt><a href="io/github/javainvaders/Alien.html#rect()" class="member-name-link">rect()</a> - Method in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.html" title="class in io.github.javainvaders">Alien</a></dt>
 <dd>
@@ -549,6 +723,10 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="io/github/javainvaders/Screen.PauseAction.html#RESUME" class="member-name-link">RESUME</a> - Enum constant in enum class io.github.javainvaders.<a href="io/github/javainvaders/Screen.PauseAction.html" title="enum class in io.github.javainvaders">Screen.PauseAction</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#RNG" class="member-name-link">RNG</a> - Static variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Shared Random instance used to vary the burst count each fire cycle.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:S">S</h2>
 <dl class="index">
@@ -604,6 +782,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="io/github/javainvaders/Main.html#screenManager" class="member-name-link">screenManager</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Main.html" title="class in io.github.javainvaders">Main</a></dt>
 <dd>
 <div class="block">Handles all menu/pause rendering and their input.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#shakeOffsetX" class="member-name-link">shakeOffsetX</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Current horizontal shake offset applied while dying.</div>
 </dd>
 <dt><a href="io/github/javainvaders/Game.html#shapes" class="member-name-link">shapes</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Game.html" title="class in io.github.javainvaders">Game</a></dt>
 <dd>
@@ -661,6 +843,10 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:U">U</h2>
 <dl class="index">
+<dt><a href="io/github/javainvaders/Alien.Boss.html#update(float,com.badlogic.gdx.utils.Array,int)" class="member-name-link">update(float, Array&lt;Alien.Bomb&gt;, int)</a> - Method in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Updates boss movement, entry descent and the fire timer.</div>
+</dd>
 <dt><a href="io/github/javainvaders/Game.html#updateGame(float)" class="member-name-link">updateGame(float)</a> - Method in class io.github.javainvaders.<a href="io/github/javainvaders/Game.html" title="class in io.github.javainvaders">Game</a></dt>
 <dd>
 <div class="block">Main update step while in the GAMEPLAY state.</div>
@@ -715,6 +901,14 @@ the order they are declared.</div>
 <div class="block">Returns an array containing the constants of this enum class, in
 the order they are declared.</div>
 </dd>
+<dt><a href="io/github/javainvaders/Alien.RadialBomb.html#vx" class="member-name-link">vx</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.RadialBomb.html" title="class in io.github.javainvaders">Alien.RadialBomb</a></dt>
+<dd>
+<div class="block">Normalised X component of the travel direction.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.RadialBomb.html#vy" class="member-name-link">vy</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.RadialBomb.html" title="class in io.github.javainvaders">Alien.RadialBomb</a></dt>
+<dd>
+<div class="block">Normalised Y component of the travel direction.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:W">W</h2>
 <dl class="index">
@@ -732,6 +926,10 @@ the order they are declared.</div>
 <dt><a href="io/github/javainvaders/Alien.Bomb.html#x" class="member-name-link">x</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Bomb.html" title="class in io.github.javainvaders">Alien.Bomb</a></dt>
 <dd>
 <div class="block">Horizontal center of the bomb.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#x" class="member-name-link">x</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Horizontal center of the boss.</div>
 </dd>
 <dt><a href="io/github/javainvaders/Alien.html#x" class="member-name-link">x</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.html" title="class in io.github.javainvaders">Alien</a></dt>
 <dd>
@@ -755,6 +953,10 @@ the order they are declared.</div>
 <dt><a href="io/github/javainvaders/Alien.Bomb.html#y" class="member-name-link">y</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Bomb.html" title="class in io.github.javainvaders">Alien.Bomb</a></dt>
 <dd>
 <div class="block">Bottom edge of the bomb.</div>
+</dd>
+<dt><a href="io/github/javainvaders/Alien.Boss.html#y" class="member-name-link">y</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></dt>
+<dd>
+<div class="block">Vertical center of the boss.</div>
 </dd>
 <dt><a href="io/github/javainvaders/Alien.html#y" class="member-name-link">y</a> - Variable in class io.github.javainvaders.<a href="io/github/javainvaders/Alien.html" title="class in io.github.javainvaders">Alien</a></dt>
 <dd>

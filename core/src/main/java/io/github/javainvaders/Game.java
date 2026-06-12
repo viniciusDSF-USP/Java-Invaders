@@ -54,6 +54,21 @@ public class Game {
     /** Active explosion animations. */
     Array<Main.Explosion> explosions;
 
+    /** Boss for level 3 — null until all normal aliens are dead. */
+    Alien.Boss boss;
+
+    /** Positions of explosion on boss death */
+    final float[][] BOSS_EXPLOSION_OFFSETS = {
+        { 0,  0}, {-150, 50}, {150, -100}, {-150, -150},
+        {150,  50}, {-150, 100}, {100, -100}, {100,  150}
+    };
+
+    /** Index of explosion on boss death to look on offset */
+    int bossExplosionIndex;
+
+    /** Timer to make the animation of boss death */
+    float bossExplosionTimer;
+
     // Level state
 
     /** Current level number (1-3). */
@@ -138,10 +153,11 @@ public class Game {
         aliens       = new Array<>();
         shields = Shields.createForLevel(level, Main.W);
         bonusAwarded = new int[]{0, 0};
+        boss = null; // spawned later when all aliens die on level 3
 
         if (!loaded) {
-            if (!p1.alive) { p1.alive = true; p1.respawnTimer = 0f; p1.x = Main.W / 2f - 120; }
-            if (!p2.alive) { p2.alive = true; p2.respawnTimer = 0f; p2.x = Main.W / 2f - 120; }
+            p1.alive = true; p1.respawnTimer = 0f; p1.x = Main.W / 2f - 120;
+            p2.alive = true; p2.respawnTimer = 0f; p2.x = Main.W / 2f + 120;
             p1.lives = 3;
             p2.lives = 3;
         }
@@ -190,7 +206,21 @@ public class Game {
 
         // move bullets and bombs
         for (Player.Bullet b : bullets) b.y += Player.Bullet.BULLET_SPEED * dt;
-        for (Alien.Bomb    b : bombs)   b.y -= Alien.Bomb.BOMB_SPEED      * dt;
+        for (Alien.Bomb b : bombs) {
+            if (b == null) continue;
+            if (b instanceof Alien.RadialBomb) {
+                Alien.RadialBomb rb = (Alien.RadialBomb) b;
+                rb.x     += rb.vx * Alien.RadialBomb.RADIAL_SPEED * dt;
+                rb.y     += rb.vy * Alien.RadialBomb.RADIAL_SPEED * dt;
+                rb.angle += dt * 4f; // spin for visual flair
+            } else {
+                b.y -= Alien.Bomb.BOMB_SPEED * dt;
+            }
+        }
+
+        // boss tick (level 3 only, spawned once normal aliens are all dead).
+        // update runs even while dying so the death sequence animation plays out.
+        if (boss != null && (boss.alive || boss.dying)) boss.update(dt, bombs, Main.W);
 
         // alien movement tick
         alienMoveTimer += dt;
@@ -220,9 +250,40 @@ public class Game {
 
         // check win/lose transitions
         if (Alien.allAliensDead(aliens)) {
-            Score.awardLevelBonus(p1, p2, level, bonusAwarded);
-            levelCompleteTimer = 3f;
-            currentScreen = Screen.State.LEVEL_COMPLETE;
+            if (level == 3) {
+                // spawn boss once all regular aliens die, if not already done
+                if (boss == null) boss = new Alien.Boss(Main.W);
+
+                // timer to wait explosion animations
+                bossExplosionTimer -= dt;
+
+                // fire explosions while the boss is in its white-flash dying state
+                if (boss != null && boss.dying && !boss.deathSequenceDone && bossExplosionTimer <= 0f && bossExplosionIndex < BOSS_EXPLOSION_OFFSETS.length) {
+                    float[] off = BOSS_EXPLOSION_OFFSETS[bossExplosionIndex];
+                    explosions.add(new Main.Explosion(boss.x + off[0], boss.y + off[1]));
+                    bossExplosionIndex++;
+                    bossExplosionTimer = Alien.Boss.BOSS_DEATH_FREEZE_DURATION/5f;
+                }
+
+                // death sequence done: fire the final explosion once
+                if (boss != null && boss.deathSequenceDone && bossExplosionIndex == BOSS_EXPLOSION_OFFSETS.length) {
+                    explosions.add(new Main.Explosion(boss.x, boss.y));
+                    boss.dying = false; // hide boss sprite
+                    bossExplosionTimer = 0.8f;
+                    bossExplosionIndex++; // increment so this block never runs again
+                }
+
+                // once the death sequence ends, do the final explosion and transition
+                if (boss != null && boss.deathSequenceDone && bossExplosionTimer <= 0f && bossExplosionIndex > BOSS_EXPLOSION_OFFSETS.length) {
+                    Score.awardLevelBonus(p1, p2, level, bonusAwarded);
+                    levelCompleteTimer = 3f;
+                    currentScreen = Screen.State.LEVEL_COMPLETE;
+                }
+            } else {
+                Score.awardLevelBonus(p1, p2, level, bonusAwarded);
+                levelCompleteTimer = 3f;
+                currentScreen = Screen.State.LEVEL_COMPLETE;
+            }
         }
 
         if (Player.allPlayersDead(p1, p2)) {
@@ -245,18 +306,32 @@ public class Game {
         for (Iterator<Player.Bullet> bi = bullets.iterator(); bi.hasNext(); ) {
             Player.Bullet b = bi.next();
             boolean hit = false;
-            for (Alien a : aliens) {
-                if (!a.alive) continue;
-                if (b.rect().overlaps(a.rect())) {
-                    a.alive = false;
-                    explosions.add(new Main.Explosion(a.x, a.y));
-                    int pts = Score.pointsForAlien(a.type);
-                    if (b.owner == 1) p1.score += pts;
-                    else              p2.score += pts;
-                    hit = true;
-                    break;
+
+            // check vs boss first
+            if (boss != null && boss.alive && b.rect().overlaps(boss.rect())) {
+                boolean killed = boss.hit();
+                if (killed) explosions.add(new Main.Explosion(boss.x, boss.y));
+                int pts = killed ? Alien.Boss.BOSS_SCORE : Alien.Boss.BOSS_SCORE / Alien.Boss.BOSS_MAX_HP;
+                if (b.owner == 1) p1.score += pts;
+                else              p2.score += pts;
+                hit = true;
+            }
+
+            if (!hit) {
+                for (Alien a : aliens) {
+                    if (!a.alive) continue;
+                    if (b.rect().overlaps(a.rect())) {
+                        a.alive = false;
+                        explosions.add(new Main.Explosion(a.x, a.y));
+                        int pts = Score.pointsForAlien(a.type);
+                        if (b.owner == 1) p1.score += pts;
+                        else              p2.score += pts;
+                        hit = true;
+                        break;
+                    }
                 }
             }
+
             if (b.y > Main.H) hit = true;
             if (hit) bi.remove();
         }
@@ -276,7 +351,13 @@ public class Game {
                 }
             }
 
-            if (b.y < 0) hit = true;
+            // radial bombs leave the field from any edge; normal bombs only from the bottom
+            if (b != null){
+                boolean outOfBounds = (b instanceof Alien.RadialBomb)
+                    ? (b.x < -50 || b.x > Main.W + 50 || b.y < -50 || b.y > Main.H + 50)
+                    : (b.y < 0);
+                if (outOfBounds) hit = true;
+            }
             if (hit) bi.remove();
         }
 
@@ -333,8 +414,9 @@ public class Game {
             shapes.rect(b.x - Player.Bullet.BULLET_W / 2, b.y, Player.Bullet.BULLET_W, Player.Bullet.BULLET_H);
         }
 
-        // alien bombs
+        // alien bombs (normal straight-falling ones only; radial handled above)
         for (Alien.Bomb b : bombs) {
+            if (b instanceof Alien.RadialBomb || b == null) continue;
             shapes.setColor(Color.RED);
             shapes.rect(b.x - Alien.Bomb.BOMB_W / 2, b.y, Alien.Bomb.BOMB_W, Alien.Bomb.BOMB_H);
         }
@@ -343,6 +425,22 @@ public class Game {
         for (Alien a : aliens) {
             if (!a.alive) continue;
             Alien.drawAlien(a, shapes);
+        }
+
+        // boss (level 3)
+        if (boss != null) boss.draw(shapes);
+
+        // radial bombs get a spinning square visual instead of a plain rect
+        for (Alien.Bomb b : bombs) {
+            if (b instanceof Alien.RadialBomb) {
+                Alien.RadialBomb rb = (Alien.RadialBomb) b;
+                shapes.setColor(Color.RED);
+                // rotate around its own center using a tiny offset quad
+                float s = (float) Math.sin(rb.angle) * 5f;
+                float c2 = (float) Math.cos(rb.angle) * 5f;
+                shapes.triangle(rb.x + c2, rb.y + s, rb.x - s, rb.y + c2, rb.x - c2, rb.y - s);
+                shapes.triangle(rb.x + s,  rb.y - c2, rb.x + c2, rb.y + s, rb.x - c2, rb.y - s);
+            }
         }
 
         // shields

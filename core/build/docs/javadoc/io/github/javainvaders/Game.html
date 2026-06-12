@@ -154,6 +154,26 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color">
 <div class="block">Bonus points awarded to each player at level end.</div>
 </div>
+<div class="col-first odd-row-color"><code>(package private) <a href="Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></code></div>
+<div class="col-second odd-row-color"><code><a href="#boss" class="member-name-link">boss</a></code></div>
+<div class="col-last odd-row-color">
+<div class="block">Boss for level 3 — null until all normal aliens are dead.</div>
+</div>
+<div class="col-first even-row-color"><code>(package private) final float[][]</code></div>
+<div class="col-second even-row-color"><code><a href="#BOSS_EXPLOSION_OFFSETS" class="member-name-link">BOSS_EXPLOSION_OFFSETS</a></code></div>
+<div class="col-last even-row-color">
+<div class="block">Positions of explosion on boss death</div>
+</div>
+<div class="col-first odd-row-color"><code>(package private) int</code></div>
+<div class="col-second odd-row-color"><code><a href="#bossExplosionIndex" class="member-name-link">bossExplosionIndex</a></code></div>
+<div class="col-last odd-row-color">
+<div class="block">Index of explosion on boss death to look on offset</div>
+</div>
+<div class="col-first even-row-color"><code>(package private) float</code></div>
+<div class="col-second even-row-color"><code><a href="#bossExplosionTimer" class="member-name-link">bossExplosionTimer</a></code></div>
+<div class="col-last even-row-color">
+<div class="block">Timer to make the animation of boss death</div>
+</div>
 <div class="col-first odd-row-color"><code>(package private) com.badlogic.gdx.utils.Array<wbr>&lt;<a href="Player.Bullet.html" title="class in io.github.javainvaders">Player.Bullet</a>&gt;</code></div>
 <div class="col-second odd-row-color"><code><a href="#bullets" class="member-name-link">bullets</a></code></div>
 <div class="col-last odd-row-color">
@@ -382,6 +402,34 @@ loadScripts(document, 'script');</script>
 <h3>explosions</h3>
 <div class="member-signature"><span class="return-type">com.badlogic.gdx.utils.Array&lt;<a href="Main.Explosion.html" title="class in io.github.javainvaders">Main.Explosion</a>&gt;</span>&nbsp;<span class="element-name">explosions</span></div>
 <div class="block">Active explosion animations.</div>
+</section>
+</li>
+<li>
+<section class="detail" id="boss">
+<h3>boss</h3>
+<div class="member-signature"><span class="return-type"><a href="Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></span>&nbsp;<span class="element-name">boss</span></div>
+<div class="block">Boss for level 3 — null until all normal aliens are dead.</div>
+</section>
+</li>
+<li>
+<section class="detail" id="BOSS_EXPLOSION_OFFSETS">
+<h3>BOSS_EXPLOSION_OFFSETS</h3>
+<div class="member-signature"><span class="modifiers">final</span>&nbsp;<span class="return-type">float[][]</span>&nbsp;<span class="element-name">BOSS_EXPLOSION_OFFSETS</span></div>
+<div class="block">Positions of explosion on boss death</div>
+</section>
+</li>
+<li>
+<section class="detail" id="bossExplosionIndex">
+<h3>bossExplosionIndex</h3>
+<div class="member-signature"><span class="return-type">int</span>&nbsp;<span class="element-name">bossExplosionIndex</span></div>
+<div class="block">Index of explosion on boss death to look on offset</div>
+</section>
+</li>
+<li>
+<section class="detail" id="bossExplosionTimer">
+<h3>bossExplosionTimer</h3>
+<div class="member-signature"><span class="return-type">float</span>&nbsp;<span class="element-name">bossExplosionTimer</span></div>
+<div class="block">Timer to make the animation of boss death</div>
 </section>
 </li>
 <li>
