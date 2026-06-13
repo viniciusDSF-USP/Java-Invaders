@@ -90,8 +90,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Score</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Handles score calcualtion and level bonuses.
- Kinda simple but keeps the scoring logic out of Main.</div>
+<div class="block">Handles score calculation and level bonuses.
+ Keeps scoring logic out of Game.</div>
 <dl class="notes">
 <dt>Author:</dt>
 <dd>Larissa R. G.; Vinicius S. F.</dd>
@@ -111,7 +111,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color"><code>static final int</code></div>
 <div class="col-second even-row-color"><code><a href="#PTS_TYPE0" class="member-name-link">PTS_TYPE0</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">Points given for a type-0 (basic) alien kill.</div>
+<div class="block">Points for a type-0 (basic) alien kill.</div>
 </div>
 <div class="col-first odd-row-color"><code>static final int</code></div>
 <div class="col-second odd-row-color"><code><a href="#PTS_TYPE1" class="member-name-link">PTS_TYPE1</a></code></div>
@@ -156,8 +156,7 @@ loadScripts(document, 'script');</script>
  int&nbsp;level,
  int[]&nbsp;bonusAwarded)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Awards the level-completion bonus to any player that still has
- lives or is alive.</div>
+<div class="block">Awards the level-completion bonus to any player that is alive or has lives left.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#drawHUD(com.badlogic.gdx.graphics.g2d.SpriteBatch,com.badlogic.gdx.graphics.g2d.BitmapFont,io.github.javainvaders.Player,io.github.javainvaders.Player,int,float,int,int)" class="member-name-link">drawHUD</a><wbr>(com.badlogic.gdx.graphics.g2d.SpriteBatch&nbsp;batch,
@@ -169,12 +168,12 @@ loadScripts(document, 'script');</script>
  int&nbsp;screenW,
  int&nbsp;screenH)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Draws the HUD score text for both players and the current level label.</div>
+<div class="block">Draws the HUD: scores, level label, save hint and the fading "Saved!" message.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#levelBonus(int)" class="member-name-link">levelBonus</a><wbr>(int&nbsp;level)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Calculates the level-completion bonus based on the current level.</div>
+<div class="block">Returns the level-completion bonus for the given level.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#pointsForAlien(int)" class="member-name-link">pointsForAlien</a><wbr>(int&nbsp;type)</code></div>
@@ -202,7 +201,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="PTS_TYPE0">
 <h3>PTS_TYPE0</h3>
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">PTS_TYPE0</span></div>
-<div class="block">Points given for a type-0 (basic) alien kill.</div>
+<div class="block">Points for a type-0 (basic) alien kill.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -270,7 +269,7 @@ loadScripts(document, 'script');</script>
 <h3>pointsForAlien</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">pointsForAlien</span><wbr><span class="parameters">(int&nbsp;type)</span></div>
 <div class="block">Returns how many points an alien of the given type is worth.
- Types above 2 fallback to 10 just in case.</div>
+ Types above 2 fall back to 10.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>type</code> - the alien type (0, 1 or 2)</dd>
@@ -283,8 +282,8 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="levelBonus(int)">
 <h3>levelBonus</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">levelBonus</span><wbr><span class="parameters">(int&nbsp;level)</span></div>
-<div class="block">Calculates the level-completion bonus based on the current level.
- Bonus grows with each level so players have reason to keep going.</div>
+<div class="block">Returns the level-completion bonus for the given level.
+ Grows with each level so players have reason to keep going.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>level</code> - current level number (1-based)</dd>
@@ -300,14 +299,14 @@ loadScripts(document, 'script');</script>
  <a href="Player.html" title="class in io.github.javainvaders">Player</a>&nbsp;p2,
  int&nbsp;level,
  int[]&nbsp;bonusAwarded)</span></div>
-<div class="block">Awards the level-completion bonus to any player that still has
- lives or is alive. Stores the amounts in bonusAwarded for the UI.</div>
+<div class="block">Awards the level-completion bonus to any player that is alive or has lives left.
+ Fills bonusAwarded so the UI can display the amounts.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>p1</code> - player one</dd>
 <dd><code>p2</code> - player two</dd>
-<dd><code>level</code> - current level — determines bonus size</dd>
-<dd><code>bonusAwarded</code> - two-element array that gets filled with [p1bonus, p2bonus]</dd>
+<dd><code>level</code> - current level - determines bonus size</dd>
+<dd><code>bonusAwarded</code> - two-element array filled with [p1bonus, p2bonus]</dd>
 </dl>
 </section>
 </li>
@@ -322,8 +321,7 @@ loadScripts(document, 'script');</script>
  float&nbsp;saveFeedbackTimer,
  int&nbsp;screenW,
  int&nbsp;screenH)</span></div>
-<div class="block">Draws the HUD score text for both players and the current level label.
- Also handles the fading "Saved!" feedback message.</div>
+<div class="block">Draws the HUD: scores, level label, save hint and the fading "Saved!" message.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>batch</code> - active SpriteBatch (already begun)</dd>
@@ -331,9 +329,9 @@ loadScripts(document, 'script');</script>
 <dd><code>p1</code> - player one</dd>
 <dd><code>p2</code> - player two</dd>
 <dd><code>level</code> - current level</dd>
-<dd><code>saveFeedbackTimer</code> - seconds left on the "Saved!" fade — 0 means dont draw it</dd>
-<dd><code>screenW</code> - game screen width for right-side positioning</dd>
-<dd><code>screenH</code> - game screen height for top positioning</dd>
+<dd><code>saveFeedbackTimer</code> - seconds left on the "Saved!" fade - 0 means skip it</dd>
+<dd><code>screenW</code> - screen width for right-side positioning</dd>
+<dd><code>screenH</code> - screen height for top positioning</dd>
 </dl>
 </section>
 </li>

@@ -112,7 +112,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color"><code>private float</code></div>
 <div class="col-second even-row-color"><code><a href="#alienMoveInterval" class="member-name-link">alienMoveInterval</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">Time between alien movement ticks.</div>
+<div class="block">Time between alien movement ticks - decreases with level.</div>
 </div>
 <div class="col-first odd-row-color"><code>(package private) <a href="AlienMoveState.html" title="class in io.github.javainvaders">AlienMoveState</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#alienMoveState" class="member-name-link">alienMoveState</a></code></div>
@@ -132,12 +132,12 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color"><code>(package private) final com.badlogic.gdx.graphics.g2d.SpriteBatch</code></div>
 <div class="col-second even-row-color"><code><a href="#batch" class="member-name-link">batch</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">Batch for drawing text on top of the game.</div>
+<div class="block">Batch for drawing HUD text.</div>
 </div>
 <div class="col-first odd-row-color"><code>private float</code></div>
 <div class="col-second odd-row-color"><code><a href="#bombInterval" class="member-name-link">bombInterval</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">How often (seconds) a bomb drops.</div>
+<div class="block">How often a bomb drops in seconds - decreases with level.</div>
 </div>
 <div class="col-first even-row-color"><code>(package private) com.badlogic.gdx.utils.Array<wbr>&lt;<a href="Alien.Bomb.html" title="class in io.github.javainvaders">Alien.Bomb</a>&gt;</code></div>
 <div class="col-second even-row-color"><code><a href="#bombs" class="member-name-link">bombs</a></code></div>
@@ -147,7 +147,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color"><code>private float</code></div>
 <div class="col-second odd-row-color"><code><a href="#bombTimer" class="member-name-link">bombTimer</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">Countdown until next bomb is droped.</div>
+<div class="block">Countdown until the next bomb is droped.</div>
 </div>
 <div class="col-first even-row-color"><code>(package private) int[]</code></div>
 <div class="col-second even-row-color"><code><a href="#bonusAwarded" class="member-name-link">bonusAwarded</a></code></div>
@@ -157,22 +157,22 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color"><code>(package private) <a href="Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#boss" class="member-name-link">boss</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">Boss for level 3 — null until all normal aliens are dead.</div>
+<div class="block">Boss for level 3 - null until all normal aliens are dead.</div>
 </div>
 <div class="col-first even-row-color"><code>(package private) final float[][]</code></div>
 <div class="col-second even-row-color"><code><a href="#BOSS_EXPLOSION_OFFSETS" class="member-name-link">BOSS_EXPLOSION_OFFSETS</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">Positions of explosion on boss death</div>
+<div class="block">Explosion offsets used during the boss death animation.</div>
 </div>
 <div class="col-first odd-row-color"><code>(package private) int</code></div>
 <div class="col-second odd-row-color"><code><a href="#bossExplosionIndex" class="member-name-link">bossExplosionIndex</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">Index of explosion on boss death to look on offset</div>
+<div class="block">Index of the next offset to use in the boss death explosion sequence.</div>
 </div>
 <div class="col-first even-row-color"><code>(package private) float</code></div>
 <div class="col-second even-row-color"><code><a href="#bossExplosionTimer" class="member-name-link">bossExplosionTimer</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">Timer to make the animation of boss death</div>
+<div class="block">Timer that paces explosions during the boss death animation.</div>
 </div>
 <div class="col-first odd-row-color"><code>(package private) com.badlogic.gdx.utils.Array<wbr>&lt;<a href="Player.Bullet.html" title="class in io.github.javainvaders">Player.Bullet</a>&gt;</code></div>
 <div class="col-second odd-row-color"><code><a href="#bullets" class="member-name-link">bullets</a></code></div>
@@ -182,7 +182,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color"><code>(package private) <a href="Screen.State.html" title="enum class in io.github.javainvaders">Screen.State</a></code></div>
 <div class="col-second even-row-color"><code><a href="#currentScreen" class="member-name-link">currentScreen</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">Which screen is active — written by Screen callbacks too.</div>
+<div class="block">Which screen is currently active - also written by Screen callbacks.</div>
 </div>
 <div class="col-first odd-row-color"><code>(package private) com.badlogic.gdx.utils.Array<wbr>&lt;<a href="Main.Explosion.html" title="class in io.github.javainvaders">Main.Explosion</a>&gt;</code></div>
 <div class="col-second odd-row-color"><code><a href="#explosions" class="member-name-link">explosions</a></code></div>
@@ -197,8 +197,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color"><code>private float</code></div>
 <div class="col-second odd-row-color"><code><a href="#initialShootTimer" class="member-name-link">initialShootTimer</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">Short grace period at level start so holding shoot doesnt
- instantly fire a bullet.</div>
+<div class="block">Short grace period at level start so holding shoot doesnt instantly fire.</div>
 </div>
 <div class="col-first even-row-color"><code>(package private) int</code></div>
 <div class="col-second even-row-color"><code><a href="#level" class="member-name-link">level</a></code></div>
@@ -280,12 +279,12 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>private void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#checkCollisions()" class="member-name-link">checkCollisions</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Checks bullet/alien, bomb/player, and alien/player collisions.</div>
+<div class="block">Checks bullet/alien, bomb/player and alien/player collisions.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>private void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#cleanUp()" class="member-name-link">cleanUp</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Removes any explosions whose timer has run out.</div>
+<div class="block">Removes explosions whose timer has run out.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>private void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#dropBomb()" class="member-name-link">dropBomb</a>()</code></div>
@@ -300,7 +299,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#renderGame()" class="member-name-link">renderGame</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Draws the entire gameplay frame: ships, aliens, bullets, bombs, HUD.</div>
+<div class="block">Draws the full gameplay frame: ships, aliens, bullets, bombs, HUD.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#startNewGame()" class="member-name-link">startNewGame</a>()</code></div>
@@ -315,7 +314,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateLevelComplete(float)" class="member-name-link">updateLevelComplete</a><wbr>(float&nbsp;dt)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Handles the level-complete countdown and transitions to next level or game-over.</div>
+<div class="block">Handles the level-complete countdown and transitions to the next level or game over.</div>
 </div>
 </div>
 </div>
@@ -338,7 +337,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="batch">
 <h3>batch</h3>
 <div class="member-signature"><span class="modifiers">final</span>&nbsp;<span class="return-type">com.badlogic.gdx.graphics.g2d.SpriteBatch</span>&nbsp;<span class="element-name">batch</span></div>
-<div class="block">Batch for drawing text on top of the game.</div>
+<div class="block">Batch for drawing HUD text.</div>
 </section>
 </li>
 <li>
@@ -353,6 +352,20 @@ loadScripts(document, 'script');</script>
 <h3>font</h3>
 <div class="member-signature"><span class="modifiers">final</span>&nbsp;<span class="return-type">com.badlogic.gdx.graphics.g2d.BitmapFont</span>&nbsp;<span class="element-name">font</span></div>
 <div class="block">Regular font for HUD text.</div>
+</section>
+</li>
+<li>
+<section class="detail" id="main">
+<h3>main</h3>
+<div class="member-signature"><span class="modifiers">final</span>&nbsp;<span class="return-type"><a href="Main.html" title="class in io.github.javainvaders">Main</a></span>&nbsp;<span class="element-name">main</span></div>
+<div class="block">Reference back to main so we can flip currentScreen.</div>
+</section>
+</li>
+<li>
+<section class="detail" id="currentScreen">
+<h3>currentScreen</h3>
+<div class="member-signature"><span class="return-type"><a href="Screen.State.html" title="enum class in io.github.javainvaders">Screen.State</a></span>&nbsp;<span class="element-name">currentScreen</span></div>
+<div class="block">Which screen is currently active - also written by Screen callbacks.</div>
 </section>
 </li>
 <li>
@@ -408,28 +421,28 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="boss">
 <h3>boss</h3>
 <div class="member-signature"><span class="return-type"><a href="Alien.Boss.html" title="class in io.github.javainvaders">Alien.Boss</a></span>&nbsp;<span class="element-name">boss</span></div>
-<div class="block">Boss for level 3 — null until all normal aliens are dead.</div>
+<div class="block">Boss for level 3 - null until all normal aliens are dead.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="BOSS_EXPLOSION_OFFSETS">
 <h3>BOSS_EXPLOSION_OFFSETS</h3>
 <div class="member-signature"><span class="modifiers">final</span>&nbsp;<span class="return-type">float[][]</span>&nbsp;<span class="element-name">BOSS_EXPLOSION_OFFSETS</span></div>
-<div class="block">Positions of explosion on boss death</div>
+<div class="block">Explosion offsets used during the boss death animation.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="bossExplosionIndex">
 <h3>bossExplosionIndex</h3>
 <div class="member-signature"><span class="return-type">int</span>&nbsp;<span class="element-name">bossExplosionIndex</span></div>
-<div class="block">Index of explosion on boss death to look on offset</div>
+<div class="block">Index of the next offset to use in the boss death explosion sequence.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="bossExplosionTimer">
 <h3>bossExplosionTimer</h3>
 <div class="member-signature"><span class="return-type">float</span>&nbsp;<span class="element-name">bossExplosionTimer</span></div>
-<div class="block">Timer to make the animation of boss death</div>
+<div class="block">Timer that paces explosions during the boss death animation.</div>
 </section>
 </li>
 <li>
@@ -440,17 +453,10 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="bombTimer">
-<h3>bombTimer</h3>
-<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">bombTimer</span></div>
-<div class="block">Countdown until next bomb is droped.</div>
-</section>
-</li>
-<li>
-<section class="detail" id="bombInterval">
-<h3>bombInterval</h3>
-<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">bombInterval</span></div>
-<div class="block">How often (seconds) a bomb drops. Decreases with level.</div>
+<section class="detail" id="alienMoveState">
+<h3>alienMoveState</h3>
+<div class="member-signature"><span class="return-type"><a href="AlienMoveState.html" title="class in io.github.javainvaders">AlienMoveState</a></span>&nbsp;<span class="element-name">alienMoveState</span></div>
+<div class="block">Mutable alien movement state (direction and descend flag).</div>
 </section>
 </li>
 <li>
@@ -464,14 +470,28 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="alienMoveInterval">
 <h3>alienMoveInterval</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">alienMoveInterval</span></div>
-<div class="block">Time between alien movement ticks. Decreases with level.</div>
+<div class="block">Time between alien movement ticks - decreases with level.</div>
 </section>
 </li>
 <li>
-<section class="detail" id="alienMoveState">
-<h3>alienMoveState</h3>
-<div class="member-signature"><span class="return-type"><a href="AlienMoveState.html" title="class in io.github.javainvaders">AlienMoveState</a></span>&nbsp;<span class="element-name">alienMoveState</span></div>
-<div class="block">Mutable alien movement state (direction and descend flag).</div>
+<section class="detail" id="bombTimer">
+<h3>bombTimer</h3>
+<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">bombTimer</span></div>
+<div class="block">Countdown until the next bomb is droped.</div>
+</section>
+</li>
+<li>
+<section class="detail" id="bombInterval">
+<h3>bombInterval</h3>
+<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">bombInterval</span></div>
+<div class="block">How often a bomb drops in seconds - decreases with level.</div>
+</section>
+</li>
+<li>
+<section class="detail" id="initialShootTimer">
+<h3>initialShootTimer</h3>
+<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">initialShootTimer</span></div>
+<div class="block">Short grace period at level start so holding shoot doesnt instantly fire.</div>
 </section>
 </li>
 <li>
@@ -502,28 +522,6 @@ loadScripts(document, 'script');</script>
 <div class="block">Set during loadGame so initLevel doesnt reset the loaded player state.</div>
 </section>
 </li>
-<li>
-<section class="detail" id="initialShootTimer">
-<h3>initialShootTimer</h3>
-<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">initialShootTimer</span></div>
-<div class="block">Short grace period at level start so holding shoot doesnt
- instantly fire a bullet.</div>
-</section>
-</li>
-<li>
-<section class="detail" id="main">
-<h3>main</h3>
-<div class="member-signature"><span class="modifiers">final</span>&nbsp;<span class="return-type"><a href="Main.html" title="class in io.github.javainvaders">Main</a></span>&nbsp;<span class="element-name">main</span></div>
-<div class="block">Reference back to main so we can flip currentScreen.</div>
-</section>
-</li>
-<li>
-<section class="detail" id="currentScreen">
-<h3>currentScreen</h3>
-<div class="member-signature"><span class="return-type"><a href="Screen.State.html" title="enum class in io.github.javainvaders">Screen.State</a></span>&nbsp;<span class="element-name">currentScreen</span></div>
-<div class="block">Which screen is active — written by Screen callbacks too.</div>
-</section>
-</li>
 </ul>
 </section>
 </li>
@@ -545,7 +543,7 @@ loadScripts(document, 'script');</script>
 <dd><code>main</code> - the Main instance (used for screen-state transitions)</dd>
 <dd><code>batch</code> - shared SpriteBatch</dd>
 <dd><code>shapes</code> - shared ShapeRenderer</dd>
-<dd><code>font</code> - shared regular BitmapFont</dd>
+<dd><code>font</code> - shared BitmapFont</dd>
 </dl>
 </section>
 </li>
@@ -569,8 +567,7 @@ loadScripts(document, 'script');</script>
 <h3>initLevel</h3>
 <div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">initLevel</span>()</div>
 <div class="block">Initialises (or re-initialises) the current level.
- If loaded is true, player stats are left untouched so the loaded
- save data persists through the call.</div>
+ If loaded is true, player stats are left untouched so save data persists.</div>
 </section>
 </li>
 <li>
@@ -589,35 +586,35 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="dropBomb()">
 <h3>dropBomb</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">dropBomb</span>()</div>
-<div class="block">Picks a random alive alien to drop a bomb. Does nothing if none alive.</div>
+<div class="block">Picks a random alive alien to drop a bomb. Does nothing if none are alive.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="checkCollisions()">
 <h3>checkCollisions</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">checkCollisions</span>()</div>
-<div class="block">Checks bullet/alien, bomb/player, and alien/player collisions.</div>
+<div class="block">Checks bullet/alien, bomb/player and alien/player collisions.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="cleanUp()">
 <h3>cleanUp</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">cleanUp</span>()</div>
-<div class="block">Removes any explosions whose timer has run out.</div>
+<div class="block">Removes explosions whose timer has run out.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="updateLevelComplete(float)">
 <h3>updateLevelComplete</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">updateLevelComplete</span><wbr><span class="parameters">(float&nbsp;dt)</span></div>
-<div class="block">Handles the level-complete countdown and transitions to next level or game-over.</div>
+<div class="block">Handles the level-complete countdown and transitions to the next level or game over.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="renderGame()">
 <h3>renderGame</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">renderGame</span>()</div>
-<div class="block">Draws the entire gameplay frame: ships, aliens, bullets, bombs, HUD.</div>
+<div class="block">Draws the full gameplay frame: ships, aliens, bullets, bombs, HUD.</div>
 </section>
 </li>
 </ul>

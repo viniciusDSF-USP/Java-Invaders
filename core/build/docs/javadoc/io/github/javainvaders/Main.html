@@ -96,9 +96,9 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Main</span>
 <span class="extends-implements">extends com.badlogic.gdx.ApplicationAdapter</span></div>
-<div class="block">Main entry point for Java Invaders. Sets up shared render resources,
- owns the Screen manager and hands each frame to Game or Screen depending
- on the active state. The actual gameplay logic lives in Game.</div>
+<div class="block">Entry point for Java Invaders. Sets up shared render resources,
+ owns the Screen manager and routes each frame to Game or Screen
+ depending on the active state. Gameplay logic lives in Game.</div>
 <dl class="notes">
 <dt>Author:</dt>
 <dd>Larissa R. G.; Vinicius S. F.</dd>
@@ -140,17 +140,17 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color"><code>private com.badlogic.gdx.graphics.g2d.BitmapFont</code></div>
 <div class="col-second odd-row-color"><code><a href="#bigFont" class="member-name-link">bigFont</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">Big font for titles and game-over messages.</div>
+<div class="block">Large font for titles and game-over messages.</div>
 </div>
 <div class="col-first even-row-color"><code>private com.badlogic.gdx.graphics.OrthographicCamera</code></div>
 <div class="col-second even-row-color"><code><a href="#camera" class="member-name-link">camera</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">Orthographic camera that maps game coords to screen coords.</div>
+<div class="block">Camera that maps game coords to screen coords.</div>
 </div>
 <div class="col-first odd-row-color"><code>private com.badlogic.gdx.graphics.g2d.BitmapFont</code></div>
 <div class="col-second odd-row-color"><code><a href="#font" class="member-name-link">font</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">Regular-size font.</div>
+<div class="block">Regular-size font for HUD.</div>
 </div>
 <div class="col-first even-row-color"><code>private <a href="Game.html" title="class in io.github.javainvaders">Game</a></code></div>
 <div class="col-second even-row-color"><code><a href="#game" class="member-name-link">game</a></code></div>
@@ -160,12 +160,12 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color"><code>static final int</code></div>
 <div class="col-second odd-row-color"><code><a href="#H" class="member-name-link">H</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">Game window height.</div>
+<div class="block">Game window height in pixels.</div>
 </div>
 <div class="col-first even-row-color"><code>(package private) <a href="Screen.html" title="class in io.github.javainvaders">Screen</a></code></div>
 <div class="col-second even-row-color"><code><a href="#screenManager" class="member-name-link">screenManager</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">Handles all menu/pause rendering and their input.</div>
+<div class="block">Handles all menu and pause rendering and their input.</div>
 </div>
 <div class="col-first odd-row-color"><code>private com.badlogic.gdx.graphics.glutils.ShapeRenderer</code></div>
 <div class="col-second odd-row-color"><code><a href="#shapes" class="member-name-link">shapes</a></code></div>
@@ -175,7 +175,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color"><code>static final int</code></div>
 <div class="col-second even-row-color"><code><a href="#W" class="member-name-link">W</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">Game window width.</div>
+<div class="block">Game window width in pixels.</div>
 </div>
 </div>
 </section>
@@ -237,7 +237,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="W">
 <h3>W</h3>
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">W</span></div>
-<div class="block">Game window width.</div>
+<div class="block">Game window width in pixels.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -252,7 +252,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="H">
 <h3>H</h3>
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">H</span></div>
-<div class="block">Game window height.</div>
+<div class="block">Game window height in pixels.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -261,6 +261,13 @@ loadScripts(document, 'script');</script>
 </ul>
 </dd>
 </dl>
+</section>
+</li>
+<li>
+<section class="detail" id="camera">
+<h3>camera</h3>
+<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">com.badlogic.gdx.graphics.OrthographicCamera</span>&nbsp;<span class="element-name">camera</span></div>
+<div class="block">Camera that maps game coords to screen coords.</div>
 </section>
 </li>
 <li>
@@ -281,28 +288,21 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="font">
 <h3>font</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">com.badlogic.gdx.graphics.g2d.BitmapFont</span>&nbsp;<span class="element-name">font</span></div>
-<div class="block">Regular-size font.</div>
+<div class="block">Regular-size font for HUD.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="bigFont">
 <h3>bigFont</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">com.badlogic.gdx.graphics.g2d.BitmapFont</span>&nbsp;<span class="element-name">bigFont</span></div>
-<div class="block">Big font for titles and game-over messages.</div>
-</section>
-</li>
-<li>
-<section class="detail" id="camera">
-<h3>camera</h3>
-<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">com.badlogic.gdx.graphics.OrthographicCamera</span>&nbsp;<span class="element-name">camera</span></div>
-<div class="block">Orthographic camera that maps game coords to screen coords.</div>
+<div class="block">Large font for titles and game-over messages.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="screenManager">
 <h3>screenManager</h3>
 <div class="member-signature"><span class="return-type"><a href="Screen.html" title="class in io.github.javainvaders">Screen</a></span>&nbsp;<span class="element-name">screenManager</span></div>
-<div class="block">Handles all menu/pause rendering and their input.</div>
+<div class="block">Handles all menu and pause rendering and their input.</div>
 </section>
 </li>
 <li>

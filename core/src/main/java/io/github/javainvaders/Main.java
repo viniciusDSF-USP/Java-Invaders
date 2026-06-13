@@ -9,23 +9,26 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 /**
- * Main entry point for Java Invaders. Sets up shared render resources,
- * owns the Screen manager and hands each frame to Game or Screen depending
- * on the active state. The actual gameplay logic lives in Game.
+ * Entry point for Java Invaders. Sets up shared render resources,
+ * owns the Screen manager and routes each frame to Game or Screen
+ * depending on the active state. Gameplay logic lives in Game.
  *
  * @author Larissa R. G.; Vinicius S. F.
  */
 public class Main extends ApplicationAdapter {
 
-    // Constants
+    // Screen size
 
-    /** Game window width. */
+    /** Game window width in pixels. */
     public static final int W = 1280;
 
-    /** Game window height. */
+    /** Game window height in pixels. */
     public static final int H = 720;
 
     // Render resources
+
+    /** Camera that maps game coords to screen coords. */
+    private OrthographicCamera camera;
 
     /** Batch for drawing sprites and text. */
     private SpriteBatch batch;
@@ -33,18 +36,15 @@ public class Main extends ApplicationAdapter {
     /** Renderer for shapes (ships, aliens, bullets, etc). */
     private ShapeRenderer shapes;
 
-    /** Regular-size font. */
+    /** Regular-size font for HUD. */
     private BitmapFont font;
 
-    /** Big font for titles and game-over messages. */
+    /** Large font for titles and game-over messages. */
     private BitmapFont bigFont;
-
-    /** Orthographic camera that maps game coords to screen coords. */
-    private OrthographicCamera camera;
 
     // Managers
 
-    /** Handles all menu/pause rendering and their input. */
+    /** Handles all menu and pause rendering and their input. */
     Screen screenManager;
 
     /** Owns the gameplay loop, entities and rendering. */
@@ -70,7 +70,9 @@ public class Main extends ApplicationAdapter {
         screenManager = new Screen(font, bigFont, batch, shapes);
         game = new Game(this, batch, shapes, font);
         Config.loadFile();
+        SoundManager.get().create();
         game.currentScreen = Screen.State.MAIN_MENU;
+        SoundManager.get().playMenuMusic();
     }
 
     @Override
@@ -84,7 +86,7 @@ public class Main extends ApplicationAdapter {
 
         switch (game.currentScreen) {
             case MAIN_MENU:
-                // Screen.handleMenu does input + render + calls game.startNewGame when needed
+                // handleMenu does input + render, calls game.startNewGame when needed
                 screenManager.handleMenu(dt, game);
                 break;
             case GAMEPLAY:
@@ -92,7 +94,7 @@ public class Main extends ApplicationAdapter {
                 game.renderGame();
                 break;
             case PAUSE_MENU:
-                // Screen.handlePause does input + render (with frozen game in background)
+                // handlePause does input + render with the frozen game in background
                 screenManager.handlePause(dt, game);
                 break;
             case LEVEL_COMPLETE:
@@ -102,6 +104,7 @@ public class Main extends ApplicationAdapter {
             case GAME_OVER:
                 if (screenManager.updateGameOver(dt)) {
                     screenManager.resetMenuSelection();
+                    SoundManager.get().playMenuMusic();
                     game.currentScreen = Screen.State.MAIN_MENU;
                 }
                 boolean won = game.level > 3 && Alien.allAliensDead(game.aliens);
@@ -118,29 +121,30 @@ public class Main extends ApplicationAdapter {
         shapes.dispose();
         font.dispose();
         bigFont.dispose();
+        SoundManager.get().dispose();
     }
 
-    // Explosion helper class
+    // Explosion
 
     /**
      * Tiny data class for a timed explosion animation.
-     * Just holds position and a countdown.
-     * 
+     * Holds position and a countdown timer.
+     *
      * @author Larissa R. G.; Vinicius S. F.
      */
     public static class Explosion {
 
-        /** X center of the explosion. */
+        /** Horizontal center of the explosion. */
         float x;
 
-        /** Y center of the explosion. */
+        /** Vertical center of the explosion. */
         float y;
 
-        /** Time remaining before the explosion dissapears. */
+        /** Time remaining before the explosion disapears. */
         float timer;
 
         /**
-         * Creates an explosion at the given position.
+         * Creates an explosion at the given position with a fixed duration.
          *
          * @param x horizontal center
          * @param y vertical center

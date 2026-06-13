@@ -94,8 +94,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public static class </span><span class="element-name type-name-label">Player.Bullet</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">A bullet fired by a player ship. Moves upward and dies when it
- leaves the screen or hits an alien.</div>
+<div class="block">A bullet fired by a player ship. Moves upward and is removed when
+ it leaves the screen or hits an alien.</div>
 <dl class="notes">
 <dt>Author:</dt>
 <dd>Larissa R. G.; Vinicius S. F.</dd>
@@ -115,22 +115,22 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color"><code>static final float</code></div>
 <div class="col-second even-row-color"><code><a href="#BULLET_H" class="member-name-link">BULLET_H</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">Heigh of the bullet sprite.</div>
+<div class="block">Bullet height in pixels.</div>
 </div>
 <div class="col-first odd-row-color"><code>static float</code></div>
 <div class="col-second odd-row-color"><code><a href="#BULLET_SPEED" class="member-name-link">BULLET_SPEED</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">How fast bullets travell upward.</div>
+<div class="block">Upward travel speed in pixels per second.</div>
 </div>
 <div class="col-first even-row-color"><code>static final float</code></div>
 <div class="col-second even-row-color"><code><a href="#BULLET_W" class="member-name-link">BULLET_W</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">Width of the bullet sprite.</div>
+<div class="block">Bullet width in pixels.</div>
 </div>
 <div class="col-first odd-row-color"><code>int</code></div>
 <div class="col-second odd-row-color"><code><a href="#owner" class="member-name-link">owner</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">Which player shot this (1 or 2) — used for scoring.</div>
+<div class="block">Player index who fired this bullet — used for scoring.</div>
 </div>
 <div class="col-first even-row-color"><code>float</code></div>
 <div class="col-second even-row-color"><code><a href="#x" class="member-name-link">x</a></code></div>
@@ -176,12 +176,12 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadConfig(com.badlogic.gdx.utils.JsonValue)" class="member-name-link">loadConfig</a><wbr>(com.badlogic.gdx.utils.JsonValue&nbsp;config)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Loads bullet configuration values from the JSON data.</div>
+<div class="block">Loads bullet config values from JSON data.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>com.badlogic.gdx.math.Rectangle</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rect()" class="member-name-link">rect</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Hitbox for collision checks.</div>
+<div class="block">Returns the hitbox for collision checks.</div>
 </div>
 </div>
 </div>
@@ -204,7 +204,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="BULLET_W">
 <h3>BULLET_W</h3>
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">BULLET_W</span></div>
-<div class="block">Width of the bullet sprite.</div>
+<div class="block">Bullet width in pixels.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -219,7 +219,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="BULLET_H">
 <h3>BULLET_H</h3>
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">BULLET_H</span></div>
-<div class="block">Heigh of the bullet sprite.</div>
+<div class="block">Bullet height in pixels.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -234,7 +234,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="BULLET_SPEED">
 <h3>BULLET_SPEED</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">BULLET_SPEED</span></div>
-<div class="block">How fast bullets travell upward.</div>
+<div class="block">Upward travel speed in pixels per second.</div>
 </section>
 </li>
 <li>
@@ -255,7 +255,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="owner">
 <h3>owner</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">owner</span></div>
-<div class="block">Which player shot this (1 or 2) — used for scoring.</div>
+<div class="block">Player index who fired this bullet — used for scoring.</div>
 </section>
 </li>
 </ul>
@@ -276,7 +276,7 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>x</code> - horizontal center</dd>
-<dd><code>y</code> - starting y (usually top of the ship)</dd>
+<dd><code>y</code> - starting y (usually the top of the ship)</dd>
 <dd><code>owner</code> - player index who fired</dd>
 </dl>
 </section>
@@ -293,10 +293,10 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="loadConfig(com.badlogic.gdx.utils.JsonValue)">
 <h3>loadConfig</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">loadConfig</span><wbr><span class="parameters">(com.badlogic.gdx.utils.JsonValue&nbsp;config)</span></div>
-<div class="block">Loads bullet configuration values from the JSON data.</div>
+<div class="block">Loads bullet config values from JSON data.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>config</code> - The JSON section containing bullet settings</dd>
+<dd><code>config</code> - the JSON section containing bullet settings</dd>
 </dl>
 </section>
 </li>
@@ -304,7 +304,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="rect()">
 <h3>rect</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">com.badlogic.gdx.math.Rectangle</span>&nbsp;<span class="element-name">rect</span>()</div>
-<div class="block">Hitbox for collision checks.</div>
+<div class="block">Returns the hitbox for collision checks.</div>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>bounding rectangle of this bullet</dd>

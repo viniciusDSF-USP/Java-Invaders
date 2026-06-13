@@ -15,6 +15,9 @@
         "BOSS_BURST_COUNT": 24,
         "RADIAL_SPEED": 500
     },
+    "SoundManager": {
+        "VOLUME": 0.2
+    },
     "Save": {
         "SAVE_FILE": "javainvaders"
     }

@@ -95,9 +95,9 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public static class </span><span class="element-name type-name-label">Alien.Boss</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
 <div class="block">The level-3 boss. Appears after all regular aliens are dead,
- descends slowly from the top of the screen, then drifts sideways
- and fires radial bursts of bombs every few seconds.
- Takes several hits to kill — each hit flashes it briefly.</div>
+ descends from the top, then drifts sideways and fires radial
+ bursts of bombs every few seconds. Takes several hits to kill
+ and flashes briefly on each hit.</div>
 <dl class="notes">
 <dt>Author:</dt>
 <dd>Larissa R. G.; Vinicius S. F.</dd>
@@ -122,7 +122,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color"><code>float</code></div>
 <div class="col-second odd-row-color"><code><a href="#bobOffset" class="member-name-link">bobOffset</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">Vertical offset applied on top of BOSS_TARGET_Y — oscillates via sine.</div>
+<div class="block">Vertical offset on top of BOSS_TARGET_Y - oscillates via sine.</div>
 </div>
 <div class="col-first even-row-color"><code>float</code></div>
 <div class="col-second even-row-color"><code><a href="#bobTimer" class="member-name-link">bobTimer</a></code></div>
@@ -132,12 +132,12 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color"><code>static final float</code></div>
 <div class="col-second odd-row-color"><code><a href="#BOSS_BOB_AMP" class="member-name-link">BOSS_BOB_AMP</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">Amplitude of the vertical bob, in pixels.</div>
+<div class="block">Amplitude of the vertical bob in pixels.</div>
 </div>
 <div class="col-first even-row-color"><code>static final float</code></div>
 <div class="col-second even-row-color"><code><a href="#BOSS_BOB_SPEED" class="member-name-link">BOSS_BOB_SPEED</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">How fast the boss bobs up and down (full cycles per second).</div>
+<div class="block">Full bob cycles per second.</div>
 </div>
 <div class="col-first odd-row-color"><code>static int</code></div>
 <div class="col-second odd-row-color"><code><a href="#BOSS_BURST_COUNT" class="member-name-link">BOSS_BURST_COUNT</a></code></div>
@@ -147,17 +147,17 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color"><code>static final float</code></div>
 <div class="col-second even-row-color"><code><a href="#BOSS_DEATH_FLASH_INTERVAL" class="member-name-link">BOSS_DEATH_FLASH_INTERVAL</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">Duration of each flash on/off half-cycle during death, in seconds.</div>
+<div class="block">Duration of each flash half-cycle in seconds.</div>
 </div>
 <div class="col-first odd-row-color"><code>static final int</code></div>
 <div class="col-second odd-row-color"><code><a href="#BOSS_DEATH_FLASHES" class="member-name-link">BOSS_DEATH_FLASHES</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">How many times the boss flashes white during its death sequence.</div>
+<div class="block">How many times the boss flashes during its death sequence.</div>
 </div>
 <div class="col-first even-row-color"><code>static final float</code></div>
 <div class="col-second even-row-color"><code><a href="#BOSS_DEATH_FREEZE_DURATION" class="member-name-link">BOSS_DEATH_FREEZE_DURATION</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">Seconds the boss stays as a white static silhouette before the final explosion.</div>
+<div class="block">Seconds the boss holds as a white silhouette before the final explosion.</div>
 </div>
 <div class="col-first odd-row-color"><code>static final float</code></div>
 <div class="col-second odd-row-color"><code><a href="#BOSS_ENTRY_SPEED" class="member-name-link">BOSS_ENTRY_SPEED</a></code></div>
@@ -192,17 +192,17 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color"><code>static final float</code></div>
 <div class="col-second odd-row-color"><code><a href="#BOSS_TARGET_Y" class="member-name-link">BOSS_TARGET_Y</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">Y position the boss stops descending at.</div>
+<div class="block">Y position where the boss stops descending.</div>
 </div>
 <div class="col-first even-row-color"><code>static final float</code></div>
 <div class="col-second even-row-color"><code><a href="#BOSS_W" class="member-name-link">BOSS_W</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">Width of the boss sprite — roughly 13.5x a normal alien.</div>
+<div class="block">Width of the boss sprite - roughly 13.5x a normal alien.</div>
 </div>
 <div class="col-first odd-row-color"><code>int</code></div>
 <div class="col-second odd-row-color"><code><a href="#deathFlashesLeft" class="member-name-link">deathFlashesLeft</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">Counts how many flash half-cycles remain in the death sequence.</div>
+<div class="block">How many flash half-cycles remain in the death sequence.</div>
 </div>
 <div class="col-first even-row-color"><code>float</code></div>
 <div class="col-second even-row-color"><code><a href="#deathFlashTimer" class="member-name-link">deathFlashTimer</a></code></div>
@@ -224,7 +224,7 @@ loadScripts(document, 'script');</script>
 <div class="col-second odd-row-color"><code><a href="#deathSequenceDone" class="member-name-link">deathSequenceDone</a></code></div>
 <div class="col-last odd-row-color">
 <div class="block">True once the death sequence is fully over and the game can award
- the boss score, spawn the final explosion and proceed to YOU WIN.</div>
+ the score, spawn the explosion and proceed to YOU WIN.</div>
 </div>
 <div class="col-first even-row-color"><code>boolean</code></div>
 <div class="col-second even-row-color"><code><a href="#deathVisible" class="member-name-link">deathVisible</a></code></div>
@@ -254,7 +254,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color"><code>float</code></div>
 <div class="col-second odd-row-color"><code><a href="#hitFlashTimer" class="member-name-link">hitFlashTimer</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">Timer for the hit-flash visual effect.</div>
+<div class="block">Timer for the hit-flash effect.</div>
 </div>
 <div class="col-first even-row-color"><code>int</code></div>
 <div class="col-second even-row-color"><code><a href="#hp" class="member-name-link">hp</a></code></div>
@@ -264,12 +264,12 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color"><code>private static final <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Random.html" title="class or interface in java.util" class="external-link">Random</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#RNG" class="member-name-link">RNG</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">Shared Random instance used to vary the burst count each fire cycle.</div>
+<div class="block">Shared RNG instance used to vary the burst count each fire cycle.</div>
 </div>
 <div class="col-first even-row-color"><code>float</code></div>
 <div class="col-second even-row-color"><code><a href="#shakeOffsetX" class="member-name-link">shakeOffsetX</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">Current horizontal shake offset applied while dying.</div>
+<div class="block">Horizontal shake offset applied while dying.</div>
 </div>
 <div class="col-first odd-row-color"><code>float</code></div>
 <div class="col-second odd-row-color"><code><a href="#x" class="member-name-link">x</a></code></div>
@@ -327,12 +327,12 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadConfig(com.badlogic.gdx.utils.JsonValue)" class="member-name-link">loadConfig</a><wbr>(com.badlogic.gdx.utils.JsonValue&nbsp;config)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Loads boss configuration values from the JSON data.</div>
+<div class="block">Loads boss config values from JSON data.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>com.badlogic.gdx.math.Rectangle</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rect()" class="member-name-link">rect</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Hitbox for collision checks against player bullets.</div>
+<div class="block">Returns the hitbox for collision checks against player bullets.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update(float,com.badlogic.gdx.utils.Array,int)" class="member-name-link">update</a><wbr>(float&nbsp;dt,
@@ -362,7 +362,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="BOSS_W">
 <h3>BOSS_W</h3>
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">BOSS_W</span></div>
-<div class="block">Width of the boss sprite — roughly 13.5x a normal alien.</div>
+<div class="block">Width of the boss sprite - roughly 13.5x a normal alien.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -418,6 +418,20 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
+<section class="detail" id="BOSS_FIRE_INTERVAL">
+<h3>BOSS_FIRE_INTERVAL</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">BOSS_FIRE_INTERVAL</span></div>
+<div class="block">Seconds between radial bomb bursts.</div>
+</section>
+</li>
+<li>
+<section class="detail" id="BOSS_BURST_COUNT">
+<h3>BOSS_BURST_COUNT</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">BOSS_BURST_COUNT</span></div>
+<div class="block">Number of bombs in each radial burst.</div>
+</section>
+</li>
+<li>
 <section class="detail" id="BOSS_ENTRY_SPEED">
 <h3>BOSS_ENTRY_SPEED</h3>
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">BOSS_ENTRY_SPEED</span></div>
@@ -436,7 +450,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="BOSS_TARGET_Y">
 <h3>BOSS_TARGET_Y</h3>
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">BOSS_TARGET_Y</span></div>
-<div class="block">Y position the boss stops descending at.</div>
+<div class="block">Y position where the boss stops descending.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -448,24 +462,10 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="BOSS_FIRE_INTERVAL">
-<h3>BOSS_FIRE_INTERVAL</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">BOSS_FIRE_INTERVAL</span></div>
-<div class="block">Seconds between radial bomb bursts.</div>
-</section>
-</li>
-<li>
-<section class="detail" id="BOSS_BURST_COUNT">
-<h3>BOSS_BURST_COUNT</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">BOSS_BURST_COUNT</span></div>
-<div class="block">Number of bombs in each radial burst.</div>
-</section>
-</li>
-<li>
 <section class="detail" id="BOSS_BOB_AMP">
 <h3>BOSS_BOB_AMP</h3>
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">BOSS_BOB_AMP</span></div>
-<div class="block">Amplitude of the vertical bob, in pixels.</div>
+<div class="block">Amplitude of the vertical bob in pixels.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -480,7 +480,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="BOSS_BOB_SPEED">
 <h3>BOSS_BOB_SPEED</h3>
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">BOSS_BOB_SPEED</span></div>
-<div class="block">How fast the boss bobs up and down (full cycles per second).</div>
+<div class="block">Full bob cycles per second.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -495,7 +495,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="BOSS_DEATH_FLASHES">
 <h3>BOSS_DEATH_FLASHES</h3>
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">BOSS_DEATH_FLASHES</span></div>
-<div class="block">How many times the boss flashes white during its death sequence.</div>
+<div class="block">How many times the boss flashes during its death sequence.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -510,7 +510,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="BOSS_DEATH_FLASH_INTERVAL">
 <h3>BOSS_DEATH_FLASH_INTERVAL</h3>
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">BOSS_DEATH_FLASH_INTERVAL</span></div>
-<div class="block">Duration of each flash on/off half-cycle during death, in seconds.</div>
+<div class="block">Duration of each flash half-cycle in seconds.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -525,7 +525,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="BOSS_DEATH_FREEZE_DURATION">
 <h3>BOSS_DEATH_FREEZE_DURATION</h3>
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">BOSS_DEATH_FREEZE_DURATION</span></div>
-<div class="block">Seconds the boss stays as a white static silhouette before the final explosion.</div>
+<div class="block">Seconds the boss holds as a white silhouette before the final explosion.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -589,7 +589,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="hitFlashTimer">
 <h3>hitFlashTimer</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">hitFlashTimer</span></div>
-<div class="block">Timer for the hit-flash visual effect.</div>
+<div class="block">Timer for the hit-flash effect.</div>
 </section>
 </li>
 <li>
@@ -603,7 +603,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="bobOffset">
 <h3>bobOffset</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">bobOffset</span></div>
-<div class="block">Vertical offset applied on top of BOSS_TARGET_Y — oscillates via sine.</div>
+<div class="block">Vertical offset on top of BOSS_TARGET_Y - oscillates via sine.</div>
 </section>
 </li>
 <li>
@@ -611,15 +611,15 @@ loadScripts(document, 'script');</script>
 <h3>dying</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">dying</span></div>
 <div class="block">True once the boss reaches zero HP and the death sequence begins.
- While this is true, alive is false but the boss is still being rendered
- and updated (flashing, shaking, freeze, then final explosion).</div>
+ While dying is true, alive is false but the boss is still rendered
+ and updated (flashing, shaking, freeze, final explosion).</div>
 </section>
 </li>
 <li>
 <section class="detail" id="deathFlashesLeft">
 <h3>deathFlashesLeft</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">deathFlashesLeft</span></div>
-<div class="block">Counts how many flash half-cycles remain in the death sequence.</div>
+<div class="block">How many flash half-cycles remain in the death sequence.</div>
 </section>
 </li>
 <li>
@@ -640,7 +640,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="shakeOffsetX">
 <h3>shakeOffsetX</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">shakeOffsetX</span></div>
-<div class="block">Current horizontal shake offset applied while dying.</div>
+<div class="block">Horizontal shake offset applied while dying.</div>
 </section>
 </li>
 <li>
@@ -663,14 +663,14 @@ loadScripts(document, 'script');</script>
 <h3>deathSequenceDone</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">deathSequenceDone</span></div>
 <div class="block">True once the death sequence is fully over and the game can award
- the boss score, spawn the final explosion and proceed to YOU WIN.</div>
+ the score, spawn the explosion and proceed to YOU WIN.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="RNG">
 <h3>RNG</h3>
 <div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Random.html" title="class or interface in java.util" class="external-link">Random</a></span>&nbsp;<span class="element-name">RNG</span></div>
-<div class="block">Shared Random instance used to vary the burst count each fire cycle.</div>
+<div class="block">Shared RNG instance used to vary the burst count each fire cycle.</div>
 </section>
 </li>
 </ul>
@@ -705,10 +705,10 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="loadConfig(com.badlogic.gdx.utils.JsonValue)">
 <h3>loadConfig</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">loadConfig</span><wbr><span class="parameters">(com.badlogic.gdx.utils.JsonValue&nbsp;config)</span></div>
-<div class="block">Loads boss configuration values from the JSON data.</div>
+<div class="block">Loads boss config values from JSON data.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>config</code> - The JSON section containing boss settings</dd>
+<dd><code>config</code> - the JSON section containing boss settings</dd>
 </dl>
 </section>
 </li>
@@ -716,7 +716,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="rect()">
 <h3>rect</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">com.badlogic.gdx.math.Rectangle</span>&nbsp;<span class="element-name">rect</span>()</div>
-<div class="block">Hitbox for collision checks against player bullets.</div>
+<div class="block">Returns the hitbox for collision checks against player bullets.</div>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>bounding rectangle centered on this boss</dd>
@@ -750,9 +750,9 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="hit()">
 <h3>hit</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">hit</span>()</div>
-<div class="block">Registers a bullet hit. Decrements HP and triggers hit flash.
- When HP reaches zero, starts the death sequence (flashes + shake +
- freeze) instead of removing the boss immediately — call
+<div class="block">Registers a bullet hit. Decrements HP and triggers the hit flash.
+ When HP reaches zero, starts the death sequence (flashes, shake and
+ freeze) instead of removing the boss immediately. Call
  <a href="#deathSequenceDone"><code>deathSequenceDone</code></a> to know when the game can proceed.</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -764,10 +764,10 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="draw(com.badlogic.gdx.graphics.glutils.ShapeRenderer)">
 <h3>draw</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">draw</span><wbr><span class="parameters">(com.badlogic.gdx.graphics.glutils.ShapeRenderer&nbsp;shapes)</span></div>
-<div class="block">Draws the boss using shape primitives. Behaviour differs by phase:
- Normal patrol — gold/yellow, bob offset applied, flashes white on hit;
- Death sequence — alternates visible/invisible while shaking sideways;
- Death freeze — solid white silhouette with no shake.</div>
+<div class="block">Draws the boss using shape primitives. Behavior differs by phase:
+ normal patrol is gold/yellow with bob offset and flashes white on hit;
+ death sequence alternates visible/invisible while shaking sideways;
+ death freeze shows a solid white silhouette with no shake.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>shapes</code> - active ShapeRenderer (already begun)</dd>

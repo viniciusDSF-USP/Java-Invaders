@@ -8,63 +8,77 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.JsonValue;
 
 /**
- * Represents a player ship in the game. Holds position, lives,
- * score and shooting state. Also handles blink logic wen the player dies.
+ * Represents a player ship. Holds position, lives, score and shooting state.
+ * Also handles the blink animation when the player dies and respawns.
  *
  * @author Larissa R. G.; Vinicius S. F.
  */
 public class Player {
 
-    /** How wide the ship is, in pixels. */
+    // Sprite dimensions
+
+    /** Ship width in pixels. */
     public static final float SHIP_W = 40f;
 
-    /** How tall the ship is. */
+    /** Ship height in pixels. */
     public static final float SHIP_H = 24f;
 
-    /** Movement speed of the ship (pixels per second). */
+    // Configurable stats
+
+    /** Movement speed in pixels per second. */
     public static float SHIP_SPEED = 320f;
 
-    /** Min time between shots. */
+    /** Min time between shots in seconds. */
     public static float SHOOT_COOLDOWN = 0.35f;
 
-    /** Horizontal position of the ship center. */
-    public float x;
-
-    /** Vertical position. Stays at 60 most of the time. */
-    public float y;
-
-    /** How many lives this player still has. */
-    public int lives;
-
-    /** Current score for this player. */
-    public int score;
-
-    /** Countdown before player can shoot again. */
-    public float shootTimer;
-
-    /** Wether the ship is currently on screen and active. */
-    public boolean alive;
-
-    /** Time left before the player respawns after dying. */
-    public float respawnTimer;
+    // Identity
 
     /** Which player this is: 1 or 2. */
     public int index;
 
+    // Position
+
+    /** Horizontal center of the ship. */
+    public float x;
+
+    /** Vertical center — stays near 60 most of the time. */
+    public float y;
+
+    // State
+
+    /** Whether the ship is currently active on screen. */
+    public boolean alive;
+
+    /** How many lives this player still has. */
+    public int lives;
+
+    /** Current score. */
+    public int score;
+
+    // Timers
+
+    /** Countdown before the player can shoot again. */
+    public float shootTimer;
+
+    /** Countdown before the player respawns after dying. */
+    public float respawnTimer;
+
+    // Blink animation
+
     /** Total time the blink animation still runs for. */
     public float blinkTimer = 0f;
 
-    /** Controls how fast the ship flickers on/off. */
+    /** Controls how fast the ship flickers on and off. */
     public float blinkInterval = 0f;
 
-    /** Wether the ship is visible during a blink frame. */
+    /** Whether the ship is visible on the current blink frame. */
     public boolean blinkVisible = true;
 
     /**
-     * Sets up a new player at the given x position.
+     * Creates a new player at the given x position.
      *
      * @param index player number (1 or 2)
-     * @param x     starting horizontal position
+     * @param x     starting horizontal center
      */
     public Player(int index, float x) {
         this.index = index;
@@ -78,19 +92,19 @@ public class Player {
     }
 
     /**
-     * Loads player configuration values from the JSON data.
+     * Loads player config values from JSON data.
      *
-     * @param config The JSON section containing player settings
+     * @param config the JSON section containing player settings
      */
     public static void loadConfig(JsonValue config) {
-        if (config.has("SHIP_SPEED"))     SHIP_SPEED = config.getFloat("SHIP_SPEED");
+        if (config.has("SHIP_SPEED"))     SHIP_SPEED     = config.getFloat("SHIP_SPEED");
         if (config.has("SHOOT_COOLDOWN")) SHOOT_COOLDOWN = config.getFloat("SHOOT_COOLDOWN");
     }
 
     /**
-     * Returns the hitbox rectangle used for collision detection.
+     * Returns the hitbox used for collision detection.
      *
-     * @return a Rectangle centered on the ship
+     * @return a rectangle centered on the ship
      */
     public Rectangle rect() {
         return new Rectangle(x - SHIP_W / 2, y - SHIP_H / 2, SHIP_W, SHIP_H);
@@ -99,8 +113,8 @@ public class Player {
     // Static gameplay helpers
 
     /**
-     * Marks a player as dead and kicks off the respawn/blink animation.
-     * Adds an explosion at the player's position too.
+     * Marks a player as dead and starts the respawn blink animation.
+     * Also pushes an explosion at the player's position.
      *
      * @param p          the player to kill
      * @param explosions list to push the new explosion into
@@ -112,6 +126,7 @@ public class Player {
         p.blinkInterval = 0f;
         p.blinkVisible  = true;
         explosions.add(new Main.Explosion(p.x, p.y));
+        SoundManager.get().playPlayerHit();
     }
 
     /**
@@ -126,16 +141,16 @@ public class Player {
     }
 
     /**
-     * Updates a single player: movement input, shoot cooldown, and respawn blink.
-     * Fires a bullet into the bullets list when the shoot key is held.
+     * Updates a single player: handles movement input, shoot cooldown and
+     * respawn blink. Fires a bullet when the shoot key is held.
      *
-     * @param p                the player to update
-     * @param dt               delta time
-     * @param left             key code for moving left
-     * @param right            key code for moving right
-     * @param shoot            key code for shooting
-     * @param bullets          list to push new bullets into
-     * @param screenW          game screen width for clamping position
+     * @param p                 the player to update
+     * @param dt                delta time in seconds
+     * @param left              key code for moving left
+     * @param right             key code for moving right
+     * @param shoot             key code for shooting
+     * @param bullets           list to push new bullets into
+     * @param screenW           screen width used to clamp position
      * @param initialShootTimer grace period at level start — no shots if > 0
      */
     public static void updatePlayer(Player p, float dt, int left, int right, int shoot,
@@ -143,6 +158,7 @@ public class Player {
         if (!p.alive) {
             p.respawnTimer -= dt;
 
+            // Blink while waiting to respawn
             if (p.blinkTimer > 0) {
                 p.blinkTimer    -= dt;
                 p.blinkInterval -= dt;
@@ -154,9 +170,7 @@ public class Player {
 
             if (p.respawnTimer <= 0) {
                 p.lives--;
-                if (p.lives > 0) {
-                    p.alive = true;
-                }
+                if (p.lives > 0) p.alive = true;
             }
             return;
         }
@@ -169,19 +183,20 @@ public class Player {
         if (Gdx.input.isKeyPressed(shoot) && p.shootTimer <= 0 && initialShootTimer <= 0) {
             bullets.add(new Bullet(p.x, p.y + SHIP_H / 2, p.index));
             p.shootTimer = SHOOT_COOLDOWN;
+            SoundManager.get().playShoot();
         }
     }
 
     /**
      * Draws the ship body and wings using shape primitives.
-     * Skips drawing if the player is in a blink-off frame.
+     * Skips drawing on blink-off frames.
      *
-     * @param p      the player whose ship to draw
-     * @param c      color of the ship
+     * @param p      the player to draw
+     * @param c      ship color
      * @param shapes active ShapeRenderer (already begun)
      */
     public static void drawShip(Player p, Color c, ShapeRenderer shapes) {
-        // respect blink visibility during respawn
+        // Skip on blink-off frames during respawn
         if (!p.blinkVisible && p.blinkTimer > 0) return;
 
         shapes.setColor(c);
@@ -191,18 +206,19 @@ public class Player {
             p.x + 8, p.y + SHIP_H / 2,
             p.x,     p.y + SHIP_H / 2 + 14
         );
+        // Side wings
         shapes.rect(p.x - SHIP_W / 2 - 8, p.y - SHIP_H / 2, 8, SHIP_H / 2);
         shapes.rect(p.x + SHIP_W / 2,      p.y - SHIP_H / 2, 8, SHIP_H / 2);
     }
 
     /**
-     * Draws small ship icons representing remaining lives.
-     * Also draws a blinking icon while the player is respawning.
+     * Draws small ship icons for each remaining life. Also shows a blinking
+     * icon while the player is waiting to respawn.
      *
      * @param p      player whose lives to draw
-     * @param x      left edge where the icons start
+     * @param x      left edge where icons start
      * @param y      vertical position of the icons
-     * @param c      color for the icons
+     * @param c      icon color
      * @param shapes active ShapeRenderer (already begun)
      */
     public static void drawLives(Player p, float x, float y, Color c, ShapeRenderer shapes) {
@@ -213,6 +229,7 @@ public class Player {
             shapes.triangle(lx, y - 10, lx + 6, y, lx + 12, y - 10);
             shapes.rect(lx + 2, y - 14, 8, 4);
         }
+        // Blinking icon slot while respawning
         if (p.blinkTimer > 0 && p.blinkVisible) {
             float lx = x + lives * 24f;
             shapes.triangle(lx, y - 10, lx + 6, y, lx + 12, y - 10);
@@ -223,21 +240,27 @@ public class Player {
     // Bullet
 
     /**
-     * A bullet fired by a player ship. Moves upward and dies when it
-     * leaves the screen or hits an alien.
-     * 
+     * A bullet fired by a player ship. Moves upward and is removed when
+     * it leaves the screen or hits an alien.
+     *
      * @author Larissa R. G.; Vinicius S. F.
      */
     public static class Bullet {
 
-        /** Width of the bullet sprite. */
+        // Sprite dimensions
+
+        /** Bullet width in pixels. */
         public static final float BULLET_W = 4f;
 
-        /** Heigh of the bullet sprite. */
+        /** Bullet height in pixels. */
         public static final float BULLET_H = 16f;
 
-        /** How fast bullets travell upward. */
+        // Configurable stats
+
+        /** Upward travel speed in pixels per second. */
         public static float BULLET_SPEED = 320f;
+
+        // Instance fields
 
         /** Horizontal center of the bullet. */
         public float x;
@@ -245,14 +268,14 @@ public class Player {
         /** Bottom edge of the bullet. */
         public float y;
 
-        /** Which player shot this (1 or 2) — used for scoring. */
+        /** Player index who fired this bullet — used for scoring. */
         public int owner;
 
         /**
          * Creates a bullet at the given position for the given player.
          *
          * @param x     horizontal center
-         * @param y     starting y (usually top of the ship)
+         * @param y     starting y (usually the top of the ship)
          * @param owner player index who fired
          */
         public Bullet(float x, float y, int owner) {
@@ -262,16 +285,16 @@ public class Player {
         }
 
         /**
-         * Loads bullet configuration values from the JSON data.
+         * Loads bullet config values from JSON data.
          *
-         * @param config The JSON section containing bullet settings
+         * @param config the JSON section containing bullet settings
          */
         public static void loadConfig(JsonValue config) {
             if (config.has("BULLET_SPEED")) BULLET_SPEED = config.getFloat("BULLET_SPEED");
         }
 
         /**
-         * Hitbox for collision checks.
+         * Returns the hitbox for collision checks.
          *
          * @return bounding rectangle of this bullet
          */

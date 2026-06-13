@@ -90,7 +90,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Save</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Handles persisting and restoring game state to/from a local file.
+<div class="block">Persists and restores game state to/from a local file.
  Format is a simple comma-separated string so theres no extra deps.</div>
 <dl class="notes">
 <dt>Author:</dt>
@@ -148,7 +148,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadConfig(com.badlogic.gdx.utils.JsonValue)" class="member-name-link">loadConfig</a><wbr>(com.badlogic.gdx.utils.JsonValue&nbsp;config)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Loads player configuration values from the JSON data.</div>
+<div class="block">Loads save config values from JSON data.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadGame(io.github.javainvaders.Game)" class="member-name-link">loadGame</a><wbr>(<a href="Game.html" title="class in io.github.javainvaders">Game</a>&nbsp;game)</code></div>
@@ -210,10 +210,10 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="loadConfig(com.badlogic.gdx.utils.JsonValue)">
 <h3>loadConfig</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">loadConfig</span><wbr><span class="parameters">(com.badlogic.gdx.utils.JsonValue&nbsp;config)</span></div>
-<div class="block">Loads player configuration values from the JSON data.</div>
+<div class="block">Loads save config values from JSON data.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>config</code> - The JSON section containing player settings</dd>
+<dd><code>config</code> - the JSON section containing save settings</dd>
 </dl>
 </section>
 </li>
@@ -222,8 +222,7 @@ loadScripts(document, 'script');</script>
 <h3>canSave</h3>
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">canSave</span><wbr><span class="parameters">(<a href="Game.html" title="class in io.github.javainvaders">Game</a>&nbsp;game)</span></div>
 <div class="block">Returns true when the game state is safe to persist.
- Saving is blocked in two situations if a player is in their last-life death animation
- or the boss is active</div>
+ Blocks saving if the boss is active or any player is dying on their last life.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>game</code> - the running Game instance to inspect</dd>
@@ -237,7 +236,7 @@ loadScripts(document, 'script');</script>
 <h3>saveGame</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">saveGame</span><wbr><span class="parameters">(<a href="Game.html" title="class in io.github.javainvaders">Game</a>&nbsp;game)</span></div>
 <div class="block">Writes the current game state to the save file.
- Silently does nothing if p1/p2 are null (no game running).
+ Does nothing silently if p1/p2 are null or saving is blocked.
  Sets game.saveFeedbackTimer on success so the HUD shows "Saved!".</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -250,7 +249,7 @@ loadScripts(document, 'script');</script>
 <h3>loadGame</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">loadGame</span><wbr><span class="parameters">(<a href="Game.html" title="class in io.github.javainvaders">Game</a>&nbsp;game)</span></div>
 <div class="block">Reads the save file and restores game state into the given Game instance.
- Falls back to startNewGame if the file is missing or the data looks bad.</div>
+ Falls back to startNewGame if the file is missing or the data looks corrupt.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>game</code> - the Game instance to restore state into</dd>

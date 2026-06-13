@@ -91,8 +91,7 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Alien</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
 <div class="block">Represents one alien enemy on the grid. Tracks position, type
- and wether its still alive. Also contains the Bomb class that
- aliens drop on players.</div>
+ and whether its still alive. Also holds the Bomb and Boss inner classes.</div>
 <dl class="notes">
 <dt>Author:</dt>
 <dd>Larissa R. G.; Vinicius S. F.</dd>
@@ -145,7 +144,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color"><code>static float</code></div>
 <div class="col-second odd-row-color"><code><a href="#ALIEN_DROP" class="member-name-link">ALIEN_DROP</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">Pixels dropped down when aliens reach the edge.</div>
+<div class="block">Pixels droped down when aliens reach the edge.</div>
 </div>
 <div class="col-first even-row-color"><code>static final float</code></div>
 <div class="col-second even-row-color"><code><a href="#ALIEN_H" class="member-name-link">ALIEN_H</a></code></div>
@@ -170,12 +169,12 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color"><code>boolean</code></div>
 <div class="col-second even-row-color"><code><a href="#alive" class="member-name-link">alive</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">Wether this alien is still in play.</div>
+<div class="block">Whether this alien is still in play.</div>
 </div>
 <div class="col-first odd-row-color"><code>int</code></div>
 <div class="col-second odd-row-color"><code><a href="#type" class="member-name-link">type</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">Visual/point type: 0 = basic, 1 = medium, 2 = tough.</div>
+<div class="block">Visual and point type: 0 = basic, 1 = medium, 2 = tough.</div>
 </div>
 <div class="col-first even-row-color"><code>float</code></div>
 <div class="col-second even-row-color"><code><a href="#x" class="member-name-link">x</a></code></div>
@@ -202,7 +201,7 @@ loadScripts(document, 'script');</script>
  float&nbsp;y,
  int&nbsp;type)</code></div>
 <div class="col-last even-row-color">
-<div class="block">Creates an alien at a given position with a given type.</div>
+<div class="block">Creates an alien at the given position with the given type.</div>
 </div>
 </div>
 </section>
@@ -221,7 +220,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#allAliensDead(com.badlogic.gdx.utils.Array)" class="member-name-link">allAliensDead</a><wbr>(com.badlogic.gdx.utils.Array&lt;<a href="Alien.html" title="class in io.github.javainvaders">Alien</a>&gt;&nbsp;aliens)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Returns true when every alien in the given array is dead.</div>
+<div class="block">Returns true when every alien in the list is dead.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#drawAlien(io.github.javainvaders.Alien,com.badlogic.gdx.graphics.glutils.ShapeRenderer)" class="member-name-link">drawAlien</a><wbr>(<a href="Alien.html" title="class in io.github.javainvaders">Alien</a>&nbsp;a,
@@ -232,7 +231,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadConfig(com.badlogic.gdx.utils.JsonValue)" class="member-name-link">loadConfig</a><wbr>(com.badlogic.gdx.utils.JsonValue&nbsp;config)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Loads alien configuration values from the JSON data.</div>
+<div class="block">Loads alien config values from JSON data.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#moveAliens(com.badlogic.gdx.utils.Array,io.github.javainvaders.AlienMoveState,int,int)" class="member-name-link">moveAliens</a><wbr>(com.badlogic.gdx.utils.Array&lt;<a href="Alien.html" title="class in io.github.javainvaders">Alien</a>&gt;&nbsp;aliens,
@@ -240,13 +239,13 @@ loadScripts(document, 'script');</script>
  int&nbsp;level,
  int&nbsp;screenW)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Moves every alive alien one step sideways (or drops them down if
- alienDescend is true).</div>
+<div class="block">Moves every alive alien one step sideways, or drops them down if
+ alienDescend is true.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>com.badlogic.gdx.math.Rectangle</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rect()" class="member-name-link">rect</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Hitbox for collision checks against bullets or players.</div>
+<div class="block">Returns the hitbox for collision checks against bullets or the player.</div>
 </div>
 </div>
 </div>
@@ -265,6 +264,36 @@ loadScripts(document, 'script');</script>
 <section class="field-details" id="field-detail">
 <h2>Field Details</h2>
 <ul class="member-list">
+<li>
+<section class="detail" id="ALIEN_COLS">
+<h3>ALIEN_COLS</h3>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">ALIEN_COLS</span></div>
+<div class="block">Number of columns in the alien grid.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="tag-list">
+<li><a href="../../../constant-values.html#io.github.javainvaders.Alien.ALIEN_COLS">Constant Field Values</a></li>
+</ul>
+</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="ALIEN_ROWS">
+<h3>ALIEN_ROWS</h3>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">ALIEN_ROWS</span></div>
+<div class="block">Number of rows in the alien grid.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="tag-list">
+<li><a href="../../../constant-values.html#io.github.javainvaders.Alien.ALIEN_ROWS">Constant Field Values</a></li>
+</ul>
+</dd>
+</dl>
+</section>
+</li>
 <li>
 <section class="detail" id="ALIEN_W">
 <h3>ALIEN_W</h3>
@@ -306,37 +335,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="ALIEN_DROP">
 <h3>ALIEN_DROP</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">ALIEN_DROP</span></div>
-<div class="block">Pixels dropped down when aliens reach the edge.</div>
-</section>
-</li>
-<li>
-<section class="detail" id="ALIEN_COLS">
-<h3>ALIEN_COLS</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">ALIEN_COLS</span></div>
-<div class="block">Number of columns in the alien grid.</div>
-<dl class="notes">
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="../../../constant-values.html#io.github.javainvaders.Alien.ALIEN_COLS">Constant Field Values</a></li>
-</ul>
-</dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="ALIEN_ROWS">
-<h3>ALIEN_ROWS</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">ALIEN_ROWS</span></div>
-<div class="block">Number of rows in the alien grid.</div>
-<dl class="notes">
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="../../../constant-values.html#io.github.javainvaders.Alien.ALIEN_ROWS">Constant Field Values</a></li>
-</ul>
-</dd>
-</dl>
+<div class="block">Pixels droped down when aliens reach the edge.</div>
 </section>
 </li>
 <li>
@@ -357,15 +356,15 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="type">
 <h3>type</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">type</span></div>
-<div class="block">Visual/point type: 0 = basic, 1 = medium, 2 = tough.
- Higher type = more points and fancier sprite details.</div>
+<div class="block">Visual and point type: 0 = basic, 1 = medium, 2 = tough.
+ Higher type means more points and fancier sprite details.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="alive">
 <h3>alive</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">alive</span></div>
-<div class="block">Wether this alien is still in play.</div>
+<div class="block">Whether this alien is still in play.</div>
 </section>
 </li>
 </ul>
@@ -382,12 +381,12 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Alien</span><wbr><span class="parameters">(float&nbsp;x,
  float&nbsp;y,
  int&nbsp;type)</span></div>
-<div class="block">Creates an alien at a given position with a given type.</div>
+<div class="block">Creates an alien at the given position with the given type.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>x</code> - horizontal center</dd>
 <dd><code>y</code> - vertical center</dd>
-<dd><code>type</code> - 0, 1, or 2 — controls appearance and score value</dd>
+<dd><code>type</code> - 0, 1, or 2 - controls appearance and score value</dd>
 </dl>
 </section>
 </li>
@@ -403,10 +402,10 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="loadConfig(com.badlogic.gdx.utils.JsonValue)">
 <h3>loadConfig</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">loadConfig</span><wbr><span class="parameters">(com.badlogic.gdx.utils.JsonValue&nbsp;config)</span></div>
-<div class="block">Loads alien configuration values from the JSON data.</div>
+<div class="block">Loads alien config values from JSON data.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>config</code> - The JSON section containing alien settings</dd>
+<dd><code>config</code> - the JSON section containing alien settings</dd>
 </dl>
 </section>
 </li>
@@ -414,7 +413,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="rect()">
 <h3>rect</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">com.badlogic.gdx.math.Rectangle</span>&nbsp;<span class="element-name">rect</span>()</div>
-<div class="block">Hitbox for collision checks against bullets or players.</div>
+<div class="block">Returns the hitbox for collision checks against bullets or the player.</div>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>bounding rectangle centered on this alien</dd>
@@ -425,7 +424,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="allAliensDead(com.badlogic.gdx.utils.Array)">
 <h3>allAliensDead</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">allAliensDead</span><wbr><span class="parameters">(com.badlogic.gdx.utils.Array&lt;<a href="Alien.html" title="class in io.github.javainvaders">Alien</a>&gt;&nbsp;aliens)</span></div>
-<div class="block">Returns true when every alien in the given array is dead.</div>
+<div class="block">Returns true when every alien in the list is dead.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>aliens</code> - the current alien list</dd>
@@ -441,14 +440,14 @@ loadScripts(document, 'script');</script>
  <a href="AlienMoveState.html" title="class in io.github.javainvaders">AlienMoveState</a>&nbsp;state,
  int&nbsp;level,
  int&nbsp;screenW)</span></div>
-<div class="block">Moves every alive alien one step sideways (or drops them down if
- alienDescend is true). Flips direction after a descent.
- Updates alienDescend and alienDirX on the passed-in state object.</div>
+<div class="block">Moves every alive alien one step sideways, or drops them down if
+ alienDescend is true. Flips direction after a descent.
+ Updates alienDescend and alienDirX on the state object.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>aliens</code> - the alien list</dd>
 <dd><code>state</code> - mutable movement state (dir, descend flag)</dd>
-<dd><code>level</code> - current level — higher levels move an extra bit</dd>
+<dd><code>level</code> - current level - higher levels move an extra bit</dd>
 <dd><code>screenW</code> - game screen width used for edge detection</dd>
 </dl>
 </section>
@@ -458,8 +457,8 @@ loadScripts(document, 'script');</script>
 <h3>drawAlien</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">drawAlien</span><wbr><span class="parameters">(<a href="Alien.html" title="class in io.github.javainvaders">Alien</a>&nbsp;a,
  com.badlogic.gdx.graphics.glutils.ShapeRenderer&nbsp;shapes)</span></div>
-<div class="block">Draws an alien using shape primitives. Different types get extra
- decorative bits (antennas, top knob).</div>
+<div class="block">Draws an alien using shape primitives. Higher types get extra
+ decorative bits like antennas and a top knob.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>a</code> - the alien to draw</dd>

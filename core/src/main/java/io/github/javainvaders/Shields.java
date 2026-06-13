@@ -11,14 +11,14 @@ import com.badlogic.gdx.utils.Array;
  * collide with a shield destroy it instantly. When a shield breaks it
  * blinks 3 times then disappears.
  *
- * Color transitions from WHITE (full health) to RED (1 hit left) as the
- * shield takes damage.
+ * Color transitions from white (full health) to red (1 hit left) as
+ * the shield takes damage.
  *
  * @author Larissa R. G.; Vinicius S. F.
  */
 public class Shields {
 
-    // ------------------------------------------------------------------ sizes
+    // Sprite dimensions and placement
 
     /** Width of a shield block. */
     public static final float SHIELD_W = 80f;
@@ -26,13 +26,20 @@ public class Shields {
     /** Height of a shield block. */
     public static final float SHIELD_H = 24f;
 
-    /** Y position (bottom edge) of all shields. */
+    /** Y position (bottom edge) shared by all shields. */
     public static final float SHIELD_Y = 150f;
+
+    // Hit limit
 
     /** How many bomb hits a shield can absorb before breaking. */
     public static final int MAX_HITS = 5;
 
-    // ------------------------------------------------------------------ state
+    // Break animation duration
+
+    // Total duration of the break animation (3 blinks x 2 states x ~0.1 s)
+    private static final float BREAK_DURATION = 0.6f;
+
+    // Instance fields — position
 
     /** Horizontal center of this shield. */
     public float x;
@@ -40,11 +47,15 @@ public class Shields {
     /** Vertical center of this shield. */
     public float y;
 
+    // Instance fields — state
+
+    /** Whether this shield is still active. */
+    public boolean alive;
+
     /** Number of hits already received (0 = pristine, MAX_HITS = destroyed). */
     public int hits;
 
-    /** Whether this shield is still active (not yet fully removed). */
-    public boolean alive;
+    // Instance fields — break animation
 
     /**
      * When > 0 the shield is in its break-blink animation.
@@ -52,19 +63,11 @@ public class Shields {
      */
     public float breakTimer;
 
-    /**
-     * Controls the on/off cadence of the blink animation.
-     * Decrements each frame; flips visibility when it hits 0.
-     */
+    /** Controls the on/off cadence of the blink — flips visibility when it hits 0. */
     public float blinkInterval;
 
-    /** Whether the shield is currently visible during a blink frame. */
+    /** Whether the shield is visible on the current blink frame. */
     public boolean blinkVisible;
-
-    // Total duration of the break animation (3 blinks × 2 states × ~0.1 s).
-    private static final float BREAK_DURATION = 0.6f;
-
-    // ------------------------------------------------------------------ ctor
 
     /**
      * Creates a shield centered at (x, y).
@@ -73,19 +76,17 @@ public class Shields {
      * @param y vertical center
      */
     public Shields(float x, float y) {
-        this.x            = x;
-        this.y            = y;
-        this.hits         = 0;
-        this.alive        = true;
-        this.breakTimer   = 0f;
+        this.x             = x;
+        this.y             = y;
+        this.hits          = 0;
+        this.alive         = true;
+        this.breakTimer    = 0f;
         this.blinkInterval = 0f;
         this.blinkVisible  = true;
     }
 
-    // ------------------------------------------------------------------ rect
-
     /**
-     * Hitbox used for collision checks against bombs and aliens.
+     * Returns the hitbox for collision checks against bombs and aliens.
      *
      * @return bounding rectangle centered on this shield
      */
@@ -93,27 +94,24 @@ public class Shields {
         return new Rectangle(x - SHIELD_W / 2, y - SHIELD_H / 2, SHIELD_W, SHIELD_H);
     }
 
-    // ------------------------------------------------------------------ helpers
-
     /**
-     * Returns true when this shield is completely gone (no longer rendered
-     * or used in collision checks).
+     * Returns true when the shield is fully gone and can be removed from the list.
      *
-     * @return true if the shield should be removed from the list
+     * @return true if no longer rendered or collidable
      */
     public boolean isGone() {
         return !alive && breakTimer <= 0f;
     }
 
-    // ------------------------------------------------------------------ static API
+    // Static API
 
     /**
      * Builds the shield list for the given level.
-     * Level 1 → 3 shields, level 2 → 2 shields, level 3 → 1 shield.
+     * Level 1 gives 3 shields, level 2 gives 2, level 3 gives 1.
      *
-     * @param level current level number
-     * @param screenW game screen width, used to space shields evenly
-     * @return a new Array populated with the correct shields
+     * @param level   current level number
+     * @param screenW screen width used to space shields evenly
+     * @return new array populated with the right shields
      */
     public static Array<Shields> createForLevel(int level, int screenW) {
         Array<Shields> list = new Array<>();
@@ -129,7 +127,7 @@ public class Shields {
 
     /**
      * Registers a bomb hit on a shield. Increments the hit counter and
-     * starts the break animation once the shield reaches MAX_HITS.
+     * starts the break animation once MAX_HITS is reached.
      *
      * @param s the shield that was hit
      */
@@ -138,11 +136,14 @@ public class Shields {
         s.hits++;
         if (s.hits >= MAX_HITS) {
             startBreak(s);
+            SoundManager.get().playShieldBreak();
+        } else {
+            SoundManager.get().playShieldHit();
         }
     }
 
     /**
-     * Destroys a shield immediately (e.g. when an alien collides with it).
+     * Destroys a shield instantly — used when an alien walks into it.
      *
      * @param s the shield to destroy
      */
@@ -150,9 +151,10 @@ public class Shields {
         if (!s.alive || s.breakTimer > 0f) return;
         s.hits = MAX_HITS;
         startBreak(s);
+        SoundManager.get().playShieldBreak();
     }
 
-    /** Kicks off the blink-then-remove animation. */
+    /** Starts the blink-then-remove animation. */
     private static void startBreak(Shields s) {
         s.alive        = false;
         s.breakTimer   = BREAK_DURATION;
@@ -161,8 +163,7 @@ public class Shields {
     }
 
     /**
-     * Ticks the break animation for every shield in the list and removes
-     * fully expired shields.
+     * Ticks the break animation for every shield and removes fully expired ones.
      *
      * @param shields list of shields to update
      * @param dt      delta time in seconds
@@ -170,7 +171,7 @@ public class Shields {
     public static void update(Array<Shields> shields, float dt) {
         for (Shields s : shields) {
             if (s.breakTimer > 0f) {
-                s.breakTimer   -= dt;
+                s.breakTimer    -= dt;
                 s.blinkInterval -= dt;
                 if (s.blinkInterval <= 0f) {
                     s.blinkVisible  = !s.blinkVisible;
@@ -185,29 +186,26 @@ public class Shields {
     }
 
     /**
-     * Draws all shields. Color interpolates from WHITE (0 hits) to RED
-     * (MAX_HITS - 1 hits). Blink animation is respected during break.
+     * Draws all shields. Color lerps from white (0 hits) to red (MAX_HITS - 1).
+     * Respects the blink visibility during the break animation.
      *
      * @param shields list of shields to draw
      * @param shapes  active ShapeRenderer (already begun)
      */
     public static void draw(Array<Shields> shields, ShapeRenderer shapes) {
         for (Shields s : shields) {
-            // During break animation, respect blink visibility
             if (!s.alive) {
+                // Skip on blink-off frames
                 if (!s.blinkVisible) continue;
                 shapes.setColor(Color.RED);
             } else {
-                // Lerp: 0 hits = WHITE, MAX_HITS-1 hits = RED
+                // Lerp from white to red as damage accumulates
                 float t = (float) s.hits / (MAX_HITS - 1);
-                float r = 1f;
-                float g = 1f - t;
-                float b = 1f - t;
-                shapes.setColor(r, g, b, 1f);
+                shapes.setColor(1f, 1f - t, 1f - t, 1f);
             }
             shapes.rect(s.x - SHIELD_W / 2, s.y - SHIELD_H / 2, SHIELD_W, SHIELD_H);
 
-            // Draw a simple "crack" overlay to hint at damage level
+            // Crack overlay darkens damaged segments
             if (s.alive && s.hits > 0) {
                 shapes.setColor(0f, 0f, 0f, 0.35f * s.hits);
                 float segW = SHIELD_W / MAX_HITS;

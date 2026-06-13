@@ -90,9 +90,9 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Screen</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Manages all non-gameplay screens: the main menu, pause menu,
- level-complete screen and game-over screen. Rendering and input
- for thse screens live here so Main stays clean.</div>
+<div class="block">Manages all non-gameplay screens: main menu, pause menu,
+ level-complete and game-over. Rendering and input for these
+ screens live here so Main stays clean.</div>
 <dl class="notes">
 <dt>Author:</dt>
 <dd>Larissa R. G.; Vinicius S. F.</dd>
@@ -122,7 +122,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color"><code>static enum&nbsp;</code></div>
 <div class="col-second even-row-color"><code><a href="Screen.State.html" class="type-name-link" title="enum class in io.github.javainvaders">Screen.State</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">All posible game states / screens.</div>
+<div class="block">All posible game states.</div>
 </div>
 </div>
 </section>
@@ -139,12 +139,12 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color"><code>private final com.badlogic.gdx.graphics.g2d.SpriteBatch</code></div>
 <div class="col-second even-row-color"><code><a href="#batch" class="member-name-link">batch</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">Batch used for drawing text.</div>
+<div class="block">Batch for drawing text.</div>
 </div>
 <div class="col-first odd-row-color"><code>private final com.badlogic.gdx.graphics.g2d.BitmapFont</code></div>
 <div class="col-second odd-row-color"><code><a href="#bigFont" class="member-name-link">bigFont</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">Bigger font for titles and big messages.</div>
+<div class="block">Larger font for titles and big messages.</div>
 </div>
 <div class="col-first even-row-color"><code>private final com.badlogic.gdx.graphics.g2d.BitmapFont</code></div>
 <div class="col-second even-row-color"><code><a href="#font" class="member-name-link">font</a></code></div>
@@ -169,7 +169,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color"><code>private final com.badlogic.gdx.graphics.glutils.ShapeRenderer</code></div>
 <div class="col-second even-row-color"><code><a href="#shapes" class="member-name-link">shapes</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">Shape renderer used for the pause overlay.</div>
+<div class="block">Shape renderer for the pause overlay.</div>
 </div>
 <div class="col-first odd-row-color"><code>private static final int</code></div>
 <div class="col-second odd-row-color"><code><a href="#W" class="member-name-link">W</a></code></div>
@@ -192,7 +192,7 @@ loadScripts(document, 'script');</script>
  com.badlogic.gdx.graphics.g2d.SpriteBatch&nbsp;batch,
  com.badlogic.gdx.graphics.glutils.ShapeRenderer&nbsp;shapes)</code></div>
 <div class="col-last even-row-color">
-<div class="block">Creates the screen manager.</div>
+<div class="block">Creates the screen manager with shared render resources.</div>
 </div>
 </div>
 </section>
@@ -212,34 +212,34 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#handleMenu(float,io.github.javainvaders.Game)" class="member-name-link">handleMenu</a><wbr>(float&nbsp;dt,
  <a href="Game.html" title="class in io.github.javainvaders">Game</a>&nbsp;game)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Handles the full main-menu frame: reads input and calls startNewGame
- or loadGame on the game instance depending on what the player chose.</div>
+<div class="block">Handles the full main-menu frame: reads input, calls startNewGame or
+ loadGame on the game instance, then renders the menu.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#handlePause(float,io.github.javainvaders.Game)" class="member-name-link">handlePause</a><wbr>(float&nbsp;dt,
  <a href="Game.html" title="class in io.github.javainvaders">Game</a>&nbsp;game)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Handles the full pause frame: reads input, transitions state on Game,
- and draws the pause overlay on top of the frozen game.</div>
+<div class="block">Handles the full pause frame: reads input, updates game screen state
+ and draws the overlay on top of the frozen game.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#renderGameOver(boolean,int,int)" class="member-name-link">renderGameOver</a><wbr>(boolean&nbsp;won,
  int&nbsp;p1Score,
  int&nbsp;p2Score)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Draws the game-over (or win) screen with final scores.</div>
+<div class="block">Draws the game-over or win screen with final scores.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#renderLevelComplete(int,int%5B%5D,float)" class="member-name-link">renderLevelComplete</a><wbr>(int&nbsp;level,
  int[]&nbsp;bonusAwarded,
  float&nbsp;levelCompleteTimer)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Draws the level-complete screen with bonus info and countdown.</div>
+<div class="block">Draws the level-complete screen with bonus info and a countdown.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#renderMenu()" class="member-name-link">renderMenu</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Draws the main menu with title and 3 options.</div>
+<div class="block">Draws the main menu title and the three options.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#renderPause(java.lang.Runnable)" class="member-name-link">renderPause</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Runnable.html" title="class or interface in java.lang" class="external-link">Runnable</a>&nbsp;gameRenderCallback)</code></div>
@@ -259,17 +259,17 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateGameOver(float)" class="member-name-link">updateGameOver</a><wbr>(float&nbsp;dt)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Handles input on the game-over screen.</div>
+<div class="block">Returns true when the player presses ENTER or ESC to leave the game-over screen.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Screen.MenuAction.html" title="enum class in io.github.javainvaders">Screen.MenuAction</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateMenu(float)" class="member-name-link">updateMenu</a><wbr>(float&nbsp;dt)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Handles keyboard input on the main menu.</div>
+<div class="block">Reads keyboard input on the main menu and returns the triggered action.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Screen.PauseAction.html" title="enum class in io.github.javainvaders">Screen.PauseAction</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updatePause(float)" class="member-name-link">updatePause</a><wbr>(float&nbsp;dt)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Handles keyboard input while paused.</div>
+<div class="block">Reads keyboard input while paused and returns the triggered action.</div>
 </div>
 </div>
 </div>
@@ -319,6 +319,34 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
+<section class="detail" id="font">
+<h3>font</h3>
+<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">com.badlogic.gdx.graphics.g2d.BitmapFont</span>&nbsp;<span class="element-name">font</span></div>
+<div class="block">Font used for most text.</div>
+</section>
+</li>
+<li>
+<section class="detail" id="bigFont">
+<h3>bigFont</h3>
+<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">com.badlogic.gdx.graphics.g2d.BitmapFont</span>&nbsp;<span class="element-name">bigFont</span></div>
+<div class="block">Larger font for titles and big messages.</div>
+</section>
+</li>
+<li>
+<section class="detail" id="batch">
+<h3>batch</h3>
+<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">com.badlogic.gdx.graphics.g2d.SpriteBatch</span>&nbsp;<span class="element-name">batch</span></div>
+<div class="block">Batch for drawing text.</div>
+</section>
+</li>
+<li>
+<section class="detail" id="shapes">
+<h3>shapes</h3>
+<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">com.badlogic.gdx.graphics.glutils.ShapeRenderer</span>&nbsp;<span class="element-name">shapes</span></div>
+<div class="block">Shape renderer for the pause overlay.</div>
+</section>
+</li>
+<li>
 <section class="detail" id="menuSelection">
 <h3>menuSelection</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">menuSelection</span></div>
@@ -330,34 +358,6 @@ loadScripts(document, 'script');</script>
 <h3>pauseSelection</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">pauseSelection</span></div>
 <div class="block">Currently highlighted option in the pause menu (0-2).</div>
-</section>
-</li>
-<li>
-<section class="detail" id="font">
-<h3>font</h3>
-<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">com.badlogic.gdx.graphics.g2d.BitmapFont</span>&nbsp;<span class="element-name">font</span></div>
-<div class="block">Font used for most text.</div>
-</section>
-</li>
-<li>
-<section class="detail" id="bigFont">
-<h3>bigFont</h3>
-<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">com.badlogic.gdx.graphics.g2d.BitmapFont</span>&nbsp;<span class="element-name">bigFont</span></div>
-<div class="block">Bigger font for titles and big messages.</div>
-</section>
-</li>
-<li>
-<section class="detail" id="batch">
-<h3>batch</h3>
-<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">com.badlogic.gdx.graphics.g2d.SpriteBatch</span>&nbsp;<span class="element-name">batch</span></div>
-<div class="block">Batch used for drawing text.</div>
-</section>
-</li>
-<li>
-<section class="detail" id="shapes">
-<h3>shapes</h3>
-<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">com.badlogic.gdx.graphics.glutils.ShapeRenderer</span>&nbsp;<span class="element-name">shapes</span></div>
-<div class="block">Shape renderer used for the pause overlay.</div>
 </section>
 </li>
 </ul>
@@ -375,8 +375,7 @@ loadScripts(document, 'script');</script>
  com.badlogic.gdx.graphics.g2d.BitmapFont&nbsp;bigFont,
  com.badlogic.gdx.graphics.g2d.SpriteBatch&nbsp;batch,
  com.badlogic.gdx.graphics.glutils.ShapeRenderer&nbsp;shapes)</span></div>
-<div class="block">Creates the screen manager. Takes refs to the shared render resources
- so we dont have to create new ones.</div>
+<div class="block">Creates the screen manager with shared render resources.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>font</code> - regular-sized font</dd>
@@ -398,11 +397,10 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="updateMenu(float)">
 <h3>updateMenu</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Screen.MenuAction.html" title="enum class in io.github.javainvaders">Screen.MenuAction</a></span>&nbsp;<span class="element-name">updateMenu</span><wbr><span class="parameters">(float&nbsp;dt)</span></div>
-<div class="block">Handles keyboard input on the main menu.
- Returns a MenuAction telling Main what to do next.</div>
+<div class="block">Reads keyboard input on the main menu and returns the triggered action.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>dt</code> - delta time (not really used here but kept for symetry)</dd>
+<dd><code>dt</code> - delta time (kept for symetry, not really used)</dd>
 <dt>Returns:</dt>
 <dd>action triggered by the player, or NONE</dd>
 </dl>
@@ -412,7 +410,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="renderMenu()">
 <h3>renderMenu</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">renderMenu</span>()</div>
-<div class="block">Draws the main menu with title and 3 options.</div>
+<div class="block">Draws the main menu title and the three options.</div>
 </section>
 </li>
 <li>
@@ -420,13 +418,12 @@ loadScripts(document, 'script');</script>
 <h3>handleMenu</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">handleMenu</span><wbr><span class="parameters">(float&nbsp;dt,
  <a href="Game.html" title="class in io.github.javainvaders">Game</a>&nbsp;game)</span></div>
-<div class="block">Handles the full main-menu frame: reads input and calls startNewGame
- or loadGame on the game instance depending on what the player chose.
- Also calls renderMenu so Game doesnt have to.</div>
+<div class="block">Handles the full main-menu frame: reads input, calls startNewGame or
+ loadGame on the game instance, then renders the menu.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>dt</code> - delta time</dd>
-<dd><code>game</code> - the Game instance — needed to call startNewGame / loadGame</dd>
+<dd><code>game</code> - the Game instance - needed to start or load a game</dd>
 </dl>
 </section>
 </li>
@@ -434,8 +431,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="updatePause(float)">
 <h3>updatePause</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Screen.PauseAction.html" title="enum class in io.github.javainvaders">Screen.PauseAction</a></span>&nbsp;<span class="element-name">updatePause</span><wbr><span class="parameters">(float&nbsp;dt)</span></div>
-<div class="block">Handles keyboard input while paused.
- Returns a PauseAction so Main knows wether to resume, go to menu, or quit.</div>
+<div class="block">Reads keyboard input while paused and returns the triggered action.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>dt</code> - delta time</dd>
@@ -452,7 +448,7 @@ loadScripts(document, 'script');</script>
  Calls gameRenderCallback first so the background isnt black.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>gameRenderCallback</code> - a Runnable that draws the current game state</dd>
+<dd><code>gameRenderCallback</code> - runnable that draws the current game state</dd>
 </dl>
 </section>
 </li>
@@ -461,8 +457,8 @@ loadScripts(document, 'script');</script>
 <h3>handlePause</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">handlePause</span><wbr><span class="parameters">(float&nbsp;dt,
  <a href="Game.html" title="class in io.github.javainvaders">Game</a>&nbsp;game)</span></div>
-<div class="block">Handles the full pause frame: reads input, transitions state on Game,
- and draws the pause overlay on top of the frozen game.</div>
+<div class="block">Handles the full pause frame: reads input, updates game screen state
+ and draws the overlay on top of the frozen game.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>dt</code> - delta time</dd>
@@ -476,11 +472,11 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">renderLevelComplete</span><wbr><span class="parameters">(int&nbsp;level,
  int[]&nbsp;bonusAwarded,
  float&nbsp;levelCompleteTimer)</span></div>
-<div class="block">Draws the level-complete screen with bonus info and countdown.</div>
+<div class="block">Draws the level-complete screen with bonus info and a countdown.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>level</code> - the level that was just cleared</dd>
-<dd><code>bonusAwarded</code> - array of size 2 with bonus points for P1 and P2</dd>
+<dd><code>level</code> - the level just cleared</dd>
+<dd><code>bonusAwarded</code> - bonus points for P1 and P2</dd>
 <dd><code>levelCompleteTimer</code> - seconds remaining on the countdown</dd>
 </dl>
 </section>
@@ -489,8 +485,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="updateGameOver(float)">
 <h3>updateGameOver</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">updateGameOver</span><wbr><span class="parameters">(float&nbsp;dt)</span></div>
-<div class="block">Handles input on the game-over screen. Returns true when the player
- presses ENTER or ESC to go back to the main menu.</div>
+<div class="block">Returns true when the player presses ENTER or ESC to leave the game-over screen.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>dt</code> - delta time</dd>
@@ -505,12 +500,12 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">renderGameOver</span><wbr><span class="parameters">(boolean&nbsp;won,
  int&nbsp;p1Score,
  int&nbsp;p2Score)</span></div>
-<div class="block">Draws the game-over (or win) screen with final scores.</div>
+<div class="block">Draws the game-over or win screen with final scores.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>won</code> - true if all aliens were defeated (game beaten)</dd>
-<dd><code>p1Score</code> - score for player 1</dd>
-<dd><code>p2Score</code> - score for player 2</dd>
+<dd><code>won</code> - true if all aliens were defeated</dd>
+<dd><code>p1Score</code> - final score for player 1</dd>
+<dd><code>p2Score</code> - final score for player 2</dd>
 </dl>
 </section>
 </li>
@@ -518,7 +513,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="resetMenuSelection()">
 <h3>resetMenuSelection</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">resetMenuSelection</span>()</div>
-<div class="block">Resets the main menu cursor to the top. Usefull when returning from a game.</div>
+<div class="block">Resets the main menu cursor to the top. Useful when returning from a game.</div>
 </section>
 </li>
 <li>

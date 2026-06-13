@@ -9,18 +9,32 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 /**
- * Manages all non-gameplay screens: the main menu, pause menu,
- * level-complete screen and game-over screen. Rendering and input
- * for thse screens live here so Main stays clean.
+ * Manages all non-gameplay screens: main menu, pause menu,
+ * level-complete and game-over. Rendering and input for these
+ * screens live here so Main stays clean.
  *
  * @author Larissa R. G.; Vinicius S. F.
  */
 public class Screen {
 
-    /** All posible game states / screens. */
+    // Enums
+
+    /** All posible game states. */
     public enum State {
         MAIN_MENU, GAMEPLAY, PAUSE_MENU, LEVEL_COMPLETE, GAME_OVER
     }
+
+    /** Actions the main menu can trigger. */
+    public enum MenuAction {
+        NONE, NEW_GAME, LOAD_GAME, EXIT
+    }
+
+    /** Actions the pause menu can trigger. */
+    public enum PauseAction {
+        NONE, RESUME, EXIT_TO_MENU, EXIT_GAME
+    }
+
+    // Screen dimensions (mirrored from Main for convenience)
 
     /** Screen width in pixels. */
     private static final int W = Main.W;
@@ -28,32 +42,35 @@ public class Screen {
     /** Screen height in pixels. */
     private static final int H = Main.H;
 
+    // Render resources
+
+    /** Font used for most text. */
+    private final BitmapFont font;
+
+    /** Larger font for titles and big messages. */
+    private final BitmapFont bigFont;
+
+    /** Batch for drawing text. */
+    private final SpriteBatch batch;
+
+    /** Shape renderer for the pause overlay. */
+    private final ShapeRenderer shapes;
+
+    // Menu state
+
     /** Currently highlighted option in the main menu (0-2). */
     private int menuSelection;
 
     /** Currently highlighted option in the pause menu (0-2). */
     private int pauseSelection;
 
-    /** Font used for most text. */
-    private final BitmapFont font;
-
-    /** Bigger font for titles and big messages. */
-    private final BitmapFont bigFont;
-
-    /** Batch used for drawing text. */
-    private final SpriteBatch batch;
-
-    /** Shape renderer used for the pause overlay. */
-    private final ShapeRenderer shapes;
-
     /**
-     * Creates the screen manager. Takes refs to the shared render resources
-     * so we dont have to create new ones.
+     * Creates the screen manager with shared render resources.
      *
-     * @param font     regular-sized font
-     * @param bigFont  large font for headings
-     * @param batch    sprite batch for text drawing
-     * @param shapes   shape renderer for the pause overlay
+     * @param font    regular-sized font
+     * @param bigFont large font for headings
+     * @param batch   sprite batch for text drawing
+     * @param shapes  shape renderer for the pause overlay
      */
     public Screen(BitmapFont font, BitmapFont bigFont, SpriteBatch batch, ShapeRenderer shapes) {
         this.font = font;
@@ -67,15 +84,20 @@ public class Screen {
     // Main menu
 
     /**
-     * Handles keyboard input on the main menu.
-     * Returns a MenuAction telling Main what to do next.
+     * Reads keyboard input on the main menu and returns the triggered action.
      *
-     * @param dt delta time (not really used here but kept for symetry)
+     * @param dt delta time (kept for symetry, not really used)
      * @return action triggered by the player, or NONE
      */
     public MenuAction updateMenu(float dt) {
-        if (Gdx.input.isKeyJustPressed(Input.Keys.UP))   menuSelection = (menuSelection + 2) % 3;
-        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) menuSelection = (menuSelection + 1) % 3;
+        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+            menuSelection = (menuSelection + 2) % 3;
+            SoundManager.get().playMenuSelect();
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
+            menuSelection = (menuSelection + 1) % 3;
+            SoundManager.get().playMenuSelect();
+        }
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
             if (menuSelection == 0) return MenuAction.NEW_GAME;
             if (menuSelection == 1) return MenuAction.LOAD_GAME;
@@ -84,7 +106,7 @@ public class Screen {
         return MenuAction.NONE;
     }
 
-    /** Draws the main menu with title and 3 options. */
+    /** Draws the main menu title and the three options. */
     public void renderMenu() {
         batch.begin();
         bigFont.setColor(Color.GREEN);
@@ -105,20 +127,21 @@ public class Screen {
     }
 
     /**
-     * Handles the full main-menu frame: reads input and calls startNewGame
-     * or loadGame on the game instance depending on what the player chose.
-     * Also calls renderMenu so Game doesnt have to.
+     * Handles the full main-menu frame: reads input, calls startNewGame or
+     * loadGame on the game instance, then renders the menu.
      *
      * @param dt   delta time
-     * @param game the Game instance — needed to call startNewGame / loadGame
+     * @param game the Game instance - needed to start or load a game
      */
     public void handleMenu(float dt, Game game) {
         MenuAction action = updateMenu(dt);
-        switch (action){
+        switch (action) {
             case NEW_GAME:
+                SoundManager.get().playGameplayMusic();
                 game.startNewGame();
                 break;
             case LOAD_GAME:
+                SoundManager.get().playGameplayMusic();
                 Save.loadGame(game);
                 break;
             case EXIT:
@@ -133,15 +156,20 @@ public class Screen {
     // Pause menu
 
     /**
-     * Handles keyboard input while paused.
-     * Returns a PauseAction so Main knows wether to resume, go to menu, or quit.
+     * Reads keyboard input while paused and returns the triggered action.
      *
      * @param dt delta time
      * @return action chosen by the player, or NONE
      */
     public PauseAction updatePause(float dt) {
-        if (Gdx.input.isKeyJustPressed(Input.Keys.UP))   pauseSelection = (pauseSelection + 2) % 3;
-        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) pauseSelection = (pauseSelection + 1) % 3;
+        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+            pauseSelection = (pauseSelection + 2) % 3;
+            SoundManager.get().playMenuSelect();
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
+            pauseSelection = (pauseSelection + 1) % 3;
+            SoundManager.get().playMenuSelect();
+        }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) return PauseAction.RESUME;
 
@@ -157,13 +185,13 @@ public class Screen {
      * Renders the pause overlay on top of the frozen game frame.
      * Calls gameRenderCallback first so the background isnt black.
      *
-     * @param gameRenderCallback a Runnable that draws the current game state
+     * @param gameRenderCallback runnable that draws the current game state
      */
     public void renderPause(Runnable gameRenderCallback) {
-        // draw frozen game in background
+        // Draw frozen game in background
         gameRenderCallback.run();
 
-        // semi-transparent dark overlay
+        // Semi-transparent dark overlay
         Gdx.gl.glEnable(GL20.GL_BLEND);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
         shapes.begin(ShapeRenderer.ShapeType.Filled);
@@ -188,8 +216,8 @@ public class Screen {
     }
 
     /**
-     * Handles the full pause frame: reads input, transitions state on Game,
-     * and draws the pause overlay on top of the frozen game.
+     * Handles the full pause frame: reads input, updates game screen state
+     * and draws the overlay on top of the frozen game.
      *
      * @param dt   delta time
      * @param game the Game instance so we can flip its currentScreen
@@ -202,6 +230,7 @@ public class Screen {
                 break;
             case EXIT_TO_MENU:
                 resetMenuSelection();
+                SoundManager.get().playMenuMusic();
                 game.currentScreen = State.MAIN_MENU;
                 break;
             case EXIT_GAME:
@@ -213,13 +242,13 @@ public class Screen {
         renderPause(game::renderGame);
     }
 
-    // Level complete screen
+    // Level complete
 
     /**
-     * Draws the level-complete screen with bonus info and countdown.
+     * Draws the level-complete screen with bonus info and a countdown.
      *
-     * @param level            the level that was just cleared
-     * @param bonusAwarded     array of size 2 with bonus points for P1 and P2
+     * @param level              the level just cleared
+     * @param bonusAwarded       bonus points for P1 and P2
      * @param levelCompleteTimer seconds remaining on the countdown
      */
     public void renderLevelComplete(int level, int[] bonusAwarded, float levelCompleteTimer) {
@@ -240,11 +269,10 @@ public class Screen {
         batch.end();
     }
 
-    // Game over screen
+    // Game over
 
     /**
-     * Handles input on the game-over screen. Returns true when the player
-     * presses ENTER or ESC to go back to the main menu.
+     * Returns true when the player presses ENTER or ESC to leave the game-over screen.
      *
      * @param dt delta time
      * @return true if the player wants to return to the main menu
@@ -255,11 +283,11 @@ public class Screen {
     }
 
     /**
-     * Draws the game-over (or win) screen with final scores.
+     * Draws the game-over or win screen with final scores.
      *
-     * @param won    true if all aliens were defeated (game beaten)
-     * @param p1Score score for player 1
-     * @param p2Score score for player 2
+     * @param won     true if all aliens were defeated
+     * @param p1Score final score for player 1
+     * @param p2Score final score for player 2
      */
     public void renderGameOver(boolean won, int p1Score, int p2Score) {
         batch.begin();
@@ -277,9 +305,9 @@ public class Screen {
         batch.end();
     }
 
-    // Reset helpers
+    // Helpers
 
-    /** Resets the main menu cursor to the top. Usefull when returning from a game. */
+    /** Resets the main menu cursor to the top. Useful when returning from a game. */
     public void resetMenuSelection() {
         menuSelection = 0;
     }
@@ -287,17 +315,5 @@ public class Screen {
     /** Resets the pause cursor to "RESUME". Called each time the game is paused. */
     public void resetPauseSelection() {
         pauseSelection = 0;
-    }
-
-    // Enums for actions
-
-    /** Actions the main menu can trigger. */
-    public enum MenuAction {
-        NONE, NEW_GAME, LOAD_GAME, EXIT
-    }
-
-    /** Actions the pause menu can trigger. */
-    public enum PauseAction {
-        NONE, RESUME, EXIT_TO_MENU, EXIT_GAME
     }
 }

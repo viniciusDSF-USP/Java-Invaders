@@ -98,7 +98,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public static class </span><span class="element-name type-name-label">Alien.Bomb</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">A bomb droped by an alien. Falls down and kills players on contact.</div>
+<div class="block">A bomb droped by an alien. Falls straight down and kills the
+ player on contact.</div>
 <dl class="notes">
 <dt>Author:</dt>
 <dd>Larissa R. G.; Vinicius S. F.</dd>
@@ -123,7 +124,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color"><code>static float</code></div>
 <div class="col-second odd-row-color"><code><a href="#BOMB_SPEED" class="member-name-link">BOMB_SPEED</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">How fast bombs fall downward.</div>
+<div class="block">How fast bombs fall downward in pixels per second.</div>
 </div>
 <div class="col-first even-row-color"><code>static final float</code></div>
 <div class="col-second even-row-color"><code><a href="#BOMB_W" class="member-name-link">BOMB_W</a></code></div>
@@ -154,7 +155,7 @@ loadScripts(document, 'script');</script>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(float,float)" class="member-name-link">Bomb</a><wbr>(float&nbsp;x,
  float&nbsp;y)</code></div>
 <div class="col-last even-row-color">
-<div class="block">Creates a bomb at the given position (usually bottom of an alien).</div>
+<div class="block">Creates a bomb at the given position (usually the bottom of an alien).</div>
 </div>
 </div>
 </section>
@@ -173,12 +174,12 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadConfig(com.badlogic.gdx.utils.JsonValue)" class="member-name-link">loadConfig</a><wbr>(com.badlogic.gdx.utils.JsonValue&nbsp;config)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Loads radial bomb configuration values from the JSON data.</div>
+<div class="block">Loads bomb config values from JSON data.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>com.badlogic.gdx.math.Rectangle</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#rect()" class="member-name-link">rect</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Hitbox for collision checks agaisnt player ships.</div>
+<div class="block">Returns the hitbox for collision checks against player ships.</div>
 </div>
 </div>
 </div>
@@ -231,7 +232,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="BOMB_SPEED">
 <h3>BOMB_SPEED</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">float</span>&nbsp;<span class="element-name">BOMB_SPEED</span></div>
-<div class="block">How fast bombs fall downward.</div>
+<div class="block">How fast bombs fall downward in pixels per second.</div>
 </section>
 </li>
 <li>
@@ -261,11 +262,11 @@ loadScripts(document, 'script');</script>
 <h3>Bomb</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Bomb</span><wbr><span class="parameters">(float&nbsp;x,
  float&nbsp;y)</span></div>
-<div class="block">Creates a bomb at the given position (usually bottom of an alien).</div>
+<div class="block">Creates a bomb at the given position (usually the bottom of an alien).</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>x</code> - horizontal center</dd>
-<dd><code>y</code> - starting y position</dd>
+<dd><code>y</code> - starting Y position</dd>
 </dl>
 </section>
 </li>
@@ -281,10 +282,10 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="loadConfig(com.badlogic.gdx.utils.JsonValue)">
 <h3>loadConfig</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">loadConfig</span><wbr><span class="parameters">(com.badlogic.gdx.utils.JsonValue&nbsp;config)</span></div>
-<div class="block">Loads radial bomb configuration values from the JSON data.</div>
+<div class="block">Loads bomb config values from JSON data.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>config</code> - The JSON section containing radial bomb settings</dd>
+<dd><code>config</code> - the JSON section containing bomb settings</dd>
 </dl>
 </section>
 </li>
@@ -292,7 +293,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="rect()">
 <h3>rect</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">com.badlogic.gdx.math.Rectangle</span>&nbsp;<span class="element-name">rect</span>()</div>
-<div class="block">Hitbox for collision checks agaisnt player ships.</div>
+<div class="block">Returns the hitbox for collision checks against player ships.</div>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>bounding rectangle of this bomb</dd>
