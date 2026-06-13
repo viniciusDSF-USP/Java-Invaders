@@ -201,14 +201,14 @@ All 58 tests passed with no failures or skipped cases (Gradle test run, JUnit 4)
 
 | Test class | Tests | Failures | Skipped | Duration |
 |---|---|---|---|---|
-| AlienBombTest | 6 | 0 | 0 | 0.005 s |
-| AlienBossTest | 6 | 0 | 0 | 0.007 s |
-| AlienMoveStateTest | 3 | 0 | 0 | 0.004 s |
-| AlienTest | 11 | 0 | 0 | 0.006 s |
-| PlayerTest | 9 | 0 | 0 | 0.031 s |
-| ScoreTest | 9 | 0 | 0 | 0.021 s |
-| ShieldsTest | 14 | 0 | 0 | 0.016 s |
-| **Total** | **58** | **0** | **0** | **1.737 s** |
+| AlienBombTest | 6 | 0 | 0 | 0.024 s |
+| AlienBossTest | 6 | 0 | 0 | 0.008 s |
+| AlienMoveStateTest | 3 | 0 | 0 | 0.003 s |
+| AlienTest | 11 | 0 | 0 | 0.011 s |
+| PlayerTest | 9 | 0 | 0 | 0.008 s |
+| ScoreTest | 9 | 0 | 0 | 0.007 s |
+| ShieldsTest | 14 | 0 | 0 | 0.008 s |
+| **Total** | **58** | **0** | **0** | **1.028 s** |
 
 ---
 
@@ -253,7 +253,7 @@ Then select **Load Game** from the main menu.
 ```bash
 # 1. Clone the repository
 git clone https://github.com/viniciusDSF-USP/Java-Invaders.git
-cd java-invaders
+cd Java-Invaders
 
 # 2. Run the desktop launcher directly (downloads dependencies automatically)
 ./gradlew lwjgl3:run
