@@ -392,7 +392,7 @@ public class Alien {
                     deathFlashesLeft--;
 
                     // Random shake direction each half-cycle
-                    shakeOffsetX = (RNG.nextFloat() - 0.5f) * 20f;
+                    shakeOffsetX = (RNG.nextFloat() - 0.5f) * 300f;
 
                     if (deathFlashesLeft <= 0) {
                         // All flashes done - freeze as solid white
