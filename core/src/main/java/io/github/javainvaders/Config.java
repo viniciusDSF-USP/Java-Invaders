@@ -34,6 +34,7 @@ public class Config {
             if (root.has("Alien")) {
                 Alien.loadConfig(root.get("Alien"));
                 Alien.Bomb.loadConfig(root.get("Alien"));
+                Alien.Boss.loadConfig(root.get("Alien"));
                 Alien.RadialBomb.loadConfig(root.get("Alien"));
             }
 

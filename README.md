@@ -216,7 +216,7 @@ All 58 tests passed with no failures or skipped cases (Gradle test run, JUnit 4)
 
 ### Prerequisites
 
-- Java 11 or newer (JDK, not just JRE).
+- Java 21 or newer (JDK, not just JRE).
 - No other tools need to be installed manually; the Gradle wrapper handles everything else.
 
 ### Easy way: run the latest release jar
